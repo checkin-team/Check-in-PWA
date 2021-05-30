@@ -5,7 +5,7 @@ import RoundedButton from '../../../shared/components/Button/Rounded';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { useHistory } from 'react-router-dom';
+import { useHistory, NavLink } from 'react-router-dom';
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -14,6 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import SendIcon from '@material-ui/icons/Send';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
+import {connect} from 'react-redux';
+import actionTypes from '../actions/actionTypes';
 
 export default function TextFieldSizes() {
     // const history = useHistory()
@@ -48,6 +50,12 @@ export default function TextFieldSizes() {
         }
     ]
     let windowWidth = window.innerWidth;
+
+    const history = useHistory();
+    const ronit = () => {
+        history.push('/requests');
+    }
+
     return (
 
 
@@ -57,7 +65,7 @@ export default function TextFieldSizes() {
                 <div style={{ marginTop: '-12px' }} >
                     <Badge style={{ marginBottom: "-40px", marginLeft: "100px" }} badgeContent={"!"} color="error">
                     </Badge>
-                    <RoundedButton size="small" style={{ backgroundColor: "#0295aa", marginBottom: '15px' }}>My Requests</RoundedButton>
+                    <RoundedButton onClick={ronit} size="small" style={{ backgroundColor: "#0295aa", marginBottom: '15px' }}>My Requests</RoundedButton>
                 </div>
             </div>
             <form noValidate autoComplete="off">
@@ -127,4 +135,3 @@ export default function TextFieldSizes() {
         </div>
     );
 }
-

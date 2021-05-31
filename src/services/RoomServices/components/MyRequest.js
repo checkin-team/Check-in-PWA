@@ -50,24 +50,61 @@ function MyRequest() {
         history.goBack()
     }
 
+    const requestStyle = {
+        marginRight: '12.81vw',
+        color: '#6d6d6d',
+        fontSize: '3.125vw'
+    }
+
+    const navBarStyle = {
+        paddingTop: "2.3vh",
+        paddingLeft: "4.78vw",
+        paddingRight: '6.25vw',
+        paddingBottom: '1vh',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        zIndex: '100',
+        background: 'white',
+        minWidth: '100vw'
+    }
+
+    const requests = [
+        {
+            request: 'Send houskeeping staff to room.', status : 'PENDING'
+        },
+        {
+            request: 'Send fresh towels to room.', status : 'PENDING'
+        },
+        {
+            request: 'The food served to us burnt. Can you replace the food or provide a refund?', status : 'RESOLVED'
+        }
+    ];
+
+    const requestsContainerStyle = {
+        paddingTop: '8.25vh',
+        paddingLeft: "4.78vw",
+        paddingRight: '6.25vw',
+    }
+
     return (
-        <div style={{marginTop: "2.3vh",marginLeft: "4.78vw", marginRight: '6.25vw'}}>
-            <div>
+        <div>
+            <div style={navBarStyle}>
                 <img onClick={goBack} src={BackButton} alt="Back Button" style={backButtonStyle} />
                 <p style={headingStyle}>My Request</p>
             </div>
-
-            <div style={{...divStyle,marginTop: '4.25vh'}}>
-                <span style={{marginRight: '12.81vw'}} >Send houskeeping staff to room.</span>
-                <span style={statusButtonStyle}>PENDING</span>
-            </div>
-            <div style={{...divStyle,marginTop: '2.87vh'}}>
-                <span style={{marginRight: '12.81vw'}} >Send fresh towels to room.</span>
-                <span style={statusButtonStyle}>PENDING</span>
-            </div>
-            <div style={{...divStyle,marginTop: '2.87vh'}}>
-                <span style={{marginRight: '12.81vw'}}>The food served to us burnt. Can you replace the food or provide a refund?</span>
-                <span style={{...statusButtonStyle,background: '#32c282'}}>RESOLVED</span>
+            <div style={requestsContainerStyle}>
+                {requests.map(ele => {
+                    return ( 
+                    <div style={{...divStyle,marginTop: '2.87vh'}}>
+                        <span style={requestStyle}>{ele.request}</span>
+                        {ele.status === 'PENDING'?
+                            <span style={statusButtonStyle}>{ele.status}</span>:
+                            <span style={{...statusButtonStyle,background: '#32c282'}}>{ele.status}</span>
+                        }
+                    </div>
+                    )
+                })}
             </div>
         </div>
     )

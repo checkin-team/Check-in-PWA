@@ -37,7 +37,9 @@ function HomePage(props) {
                     <div
                         style={{ width: '100%', borderBottom: "1px solid grey" }}
                     >
-                        <div style={{ margin: '15px' }}><div style={{ color: "#ff5656", fontWeight: 600 }}>Room  301</div><div style={{ fontSize: '10px', fontWeight: 600, marginTop: '5px', color: '#6d6d6d' }}>{details.data.restaurant.display_name}</div></div>
+                        <div style={{ margin: '15px' }}><div style={{ color: "#ff5656", fontWeight: 600 }}>Room  301</div>
+                            <div style={{ fontSize: '10px', fontWeight: 600, marginTop: '5px', color: '#6d6d6d' }}> {details.data.restaurant.display_name ? <h3>{details.data.restaurant.display_name}</h3> : <h3>Oyo Townhouse 032</h3>}  </div>
+                        </div>
                     </div>
                 </div>
                 < Carousel />
@@ -47,7 +49,8 @@ function HomePage(props) {
 
                 <div style={{ position: "absolute", marginLeft: windowWidth * 0.8 + "px", zIndex: 1000, }}>  <MenuItem /></div>
                 <div style={{
-                    width: "100%",
+                    maxWidth: "100vw",
+                    minWidth: '100vw',
                     height: "45px",
                     overflow: "hidden",
                     position: "fixed",

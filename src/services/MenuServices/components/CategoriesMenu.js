@@ -10,6 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import Radium from 'radium';
+import cancel from '../../../assets/menu/cancel.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,8 +21,9 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
 }));
+const ITEM_HEIGHT = 48;
 
-export default function MenuListComposition() {
+function MenuListComposition() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
@@ -54,8 +57,33 @@ export default function MenuListComposition() {
         prevOpen.current = open;
     }, [open]);
 
+    // Search Button Click Functions
+
+    const [buttonClicked, setButtonClicked] = React.useState(false);
+
+    const searchStyle = {
+        marginTop: '0vh',
+        border: '1px solid #cdcdcd',
+        borderRadius: '1vw',
+        ":focus": {
+            outline: 'none'
+        },
+        fontFamily: '"Josefin Sans", sans-serif',
+        minWidth: '40vw',
+        padding: '0.6vh 2vw',
+        maxWidth: '40vw'
+    }
+
+    const closeIconStyle = {
+        position: 'absolute',
+        width: '4vw',
+        height: '4vw',
+        right: '1vw',
+        top: '1vw'
+    }
+
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between', }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: "100vw" }}>
 
             <div>
                 <Button
@@ -63,6 +91,12 @@ export default function MenuListComposition() {
                     aria-controls={open ? 'menu-list-grow' : undefined}
                     aria-haspopup="true"
                     onClick={handleToggle}
+                    PaperProps={{
+                        style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: '20ch',
+                        },
+                    }}
                 >
                     All
             <div style={{ marginBottom: '.5px' }}>     {open ? (<ArrowDropUpIcon />) : (<ArrowDropDownIcon />)}</div>
@@ -87,7 +121,18 @@ export default function MenuListComposition() {
                     )}
                 </Popper>
             </div>
-            <div style={{ margin: '10px' }}><SearchIcon /></div>
+            <div style={{ margin: '10px' }}>
+                {buttonClicked ? 
+                    (<div style={{position: 'relative'}}>
+                        <input style={searchStyle} type="text" placeholder="Start typing to search..." />
+                        <img src={cancel} style={closeIconStyle} onClick={() => setButtonClicked(false)}/>
+                    </div>):
+                    (<SearchIcon onClick={() => setButtonClicked(true)}/>)
+                }
+                
+                </div>
         </div>
     );
 }
+
+export default Radium(MenuListComposition);

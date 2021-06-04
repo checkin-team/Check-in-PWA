@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Grid } from "@material-ui/core"
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 import BoxInput from "../../../shared/components/TextInput/BoxInput"
 import Button from "../../../shared/components/Button/Basic"
@@ -8,6 +8,7 @@ import { _set_state } from '../middleware'
 
 import WhiteLogo from "../../../assets/authentication/logo_white.png"
 import MobileApp from "../../../assets/authentication/mobile_app.png"
+import  '../../../stylings/firstpage.css'
 
 function LandingPage(props) {
   const { setState } = props
@@ -23,6 +24,7 @@ function LandingPage(props) {
     })
   }
   document.body.style.backgroundColor = "#ff5656"
+
   return (
     <div className="h-100 text-light" >
       <div>
@@ -32,27 +34,28 @@ function LandingPage(props) {
         <Grid container >
           <Grid item xs={1} ></Grid>
           <Grid item xs={10} >
-
             <img
-              style={{ height: '40px', width: '150px' }}
+              style={{ height: '35px', width: '150px' }}
               src={WhiteLogo}
               width={200}
+              id="white-logo"
             />
             <br />
             <br />
-            <div style={{ fontWeight: 500, fontSize: 25 }} >Experience is everything</div>
+            <div style={{ fontWeight: 500, fontSize: 25 }} id="tag-line" >Experience is everything</div>
             <br />
-            <div className="fw-400 fs-25" style={{ lineHeight: "20px" }}>
+            <div className="fw-400 fs-25" style={{ lineHeight: "18px" }}>
               Checkin is the only thing you need while eating
               out at Restaurant or staying in Hotel.
               Ordering, service, payments all at one place.
-          </div>
+            </div>
             <br />
-            <Grid spacing={3} container >
+            <Grid spacing={1} container >
               <Grid item sm={6} xs={12} >
                 <Button
                   fullWidth
                   onClick={openApp}
+                  id="android"
                 >
                   Download for Android
                 </Button>
@@ -61,16 +64,17 @@ function LandingPage(props) {
                 <Button
                   fullWidth
                   onClick={handleSkip}
+                  id="skip"
                 >
                   Skip
                 </Button>
               </Grid>
             </Grid>
             <br />
-            <div className="text-center" >
+            <div className="text-center" id="mobile-image-container" >
               <img
                 src={MobileApp}
-                height={window.innerHeight * 0.7 + "px"}
+                id="mobile-image"
               />
             </div>
 

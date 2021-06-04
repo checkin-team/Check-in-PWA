@@ -1,0 +1,28 @@
+.description {
+  height: 24.5px;
+  overflow-y: hidden;
+}
+.donotdisplay {
+  display: none;
+}
+@media screen and (max-width: 360px) {
+  #add-button-container-with-image {
+    margin-left: 60px !important;
+  }
+  #add-button-container-without-image {
+    margin-left: 60px !important;
+  }
+}
+@media screen and (max-width: 320px){
+  #add-button-container-with-image {
+    margin-left: 40px !important;
+  }
+  #add-button-container-without-image {
+    margin-left: 55px !important;
+  }
+}
+.item-type-icon{
+  height:  14px !important;
+  color: #fff;
+  margin-top: 2px;
+}

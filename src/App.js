@@ -9,7 +9,9 @@ import { connect } from "react-redux"
 import MenuCustomisation from './services/MenuServices/components/MenuCustomisation'
 import ViewCartPage from "./services/Cart/pages/ViewCartPage"
 import CheckoutPage from './services/Checkout/pages/CheckoutPage'
-import MyRequestPage from './services/RoomServices/components/MyRequest';
+import ApplyPrommos from './services/Checkout/components/ApplyPrommos';
+import MyRequestPage from './services/RoomServices/pages/RoomServicesPage';
+
 
 // import { useSelector } from "react-redux"
 // import axios from "axios";
@@ -26,12 +28,12 @@ function App(props) {
           {
             state.signup.login.isLoggedIn ?
               <>
-                
                 <Route path="/settlebill" component={CheckoutPage} />
                 <Route path="/viewcart" component={ViewCartPage} />
                 <Route path="/home" component={HomePage} />
                 <Route path="/menu" component={MenuPage} />
                 <Route path="/sides" component={MenuCustomisation} />
+                <Route path="/Apply" component={ApplyPrommos} />
                 <Route exact path="/" component={HomePage} />
                 <Route path="/requests" component={MyRequestPage} />
               </>

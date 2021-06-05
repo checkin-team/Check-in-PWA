@@ -11,7 +11,6 @@ import MenuCustomisation from "./MenuCustomisation"
 import { addItem, removeItem } from "../../Cart/actions/actionCreator"
 import { connect } from 'react-redux'
 
-
 function Recommended(props) {
     // const [loading, setloading] = useState(true);
     const { _add_item, _remove_item } = props
@@ -24,6 +23,7 @@ function Recommended(props) {
             {
                 "pk": 85,
                 "name": "Fried Rice",
+                "type": "RECOMMENDED",
                 "types": [
                     "Veg",
                     "Egg",
@@ -36,12 +36,12 @@ function Recommended(props) {
                 ],
                 "tags": [],
                 "available_meals": [
-                    "brkfst",
+                    "b",
                     "lunch",
                     "dinner",
                     "nhtlfe"
                 ],
-                "image": "https://dev.api.check-in.in/static/menu/icons/chinese.png",
+                "image": "",
                 "description": "Have a tasty Fried Rice (egg or paneer)",
                 "ingredients": [],
                 "is_available": false,
@@ -84,7 +84,7 @@ function Recommended(props) {
             },
             {
                 mealtype: 'nonveg',
-                type: 'MUSTTRY',
+                type: 'MUST TRY',
                 name: 'Haka noodle',
                 price: 375.00,
                 discreption: '',
@@ -122,7 +122,7 @@ function Recommended(props) {
             },
             {
                 mealtype: 'veg',
-                type: 'MUSTTRY',
+                type: 'MUST TRY',
                 name: 'Pizza',
                 price: 180.98,
                 discreption: '',
@@ -162,11 +162,11 @@ function Recommended(props) {
 
     return (
 
-        <div style={{ marginBottom: '50px', marginLeft: '5px' }}>
-            <h3 style={{ color: '#6d6d6d' }}>&nbsp;Recommended</h3>
+        <div id = "Recommended"style={{ marginBottom: '50px', width: Width+"px"}}>
+            <h3 style={{ color: '#6d6d6d', marginLeft: "5px" }}>&nbsp;Recommended</h3>
 
             {Items.map((item, index) =>
-                <div style={{ height: '150px', width: '100%' }}>
+                <div style={{ height: '150px', width: Width + 'px', marginLeft: "10px"}}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ display: 'flex' }} >
                             <div>  {item.mealtype === "veg" ?
@@ -177,16 +177,15 @@ function Recommended(props) {
 
                                     style={{
                                         height: '18px',
-                                        width: '100%',
+                                        width: '103%',
                                         marginLeft: '12px',
-                                        borderTopLeftRadius: '10px',
-                                        borderBottomLeftRadius: '10px',
+                                        borderRadius: '10px 4px 4px 10px',
                                         marginBottom: '10px',
-                                        backgroundColor: item.type === "MUSTTRY" ? "#ff5656" : "#ffc850"
+                                        backgroundColor: item.type === "MUST TRY" ? "#ff5656" : "#ffc850"
                                     }}>
                                     <div>
 
-                                        <div><div style={{ height: '2px', }}>{item.type === "MUSTTRY" ?
+                                        <div><div style={{ height: '2px', }}>{item.type === "MUST TRY" ?
                                             (<WhatshotIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />) : (<ThumbUpIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />)}
                                         </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {item.type}</span> </div>
 
@@ -201,8 +200,8 @@ function Recommended(props) {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            {item.image === "" ? (<div style={{ marginLeft: Width * 0.53 + 'px', }}>
+                        <div style = {{ paddingTop: "95px"}}>
+                            {item.image === "" ? (<div style={{marginLeft: item.type==="MUSTTRY" ? Width*0.45 +'px' : Width*0.35+'px'}}>
                                 <div style={{
                                     height: '20px',
                                     width: '70px',
@@ -219,7 +218,7 @@ function Recommended(props) {
                                                 <MenuCustomisation variants={item.variants} />
                                                 :
                                                 <div
-                                                    style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
+                                                    style={{ paddingTop: '5px', paddingLeft: '20px', paddingRight: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
                                                     onClick={() => handleIncrease(index)}
                                                 >
                                                     ADD
@@ -242,17 +241,19 @@ function Recommended(props) {
                                 </div>
                             </div>) :
 
-                                (<div style={{ zIndex: -1 }}>
-                                    <div ><img style={{
+                                (<div style={{ zIndex: -1, marginTop: "-105px" }}>
+                                    <div style={{ paddingTop: "10px"}}><img style={{
+                                        
+                                        //border: "2px solid black",
                                         height: '80px',
-                                        marginTop: '10px',
-                                        marginRight: Width * 0.02 + 'px',
+                                        marginTop: '4px',
+                                        marginRight: '10px',
                                         borderRadius: '5px',
-                                        marginLeft: Width * 0.34 + 'px',
-                                        position: 'absolute'
+                                        marginLeft: Width * 0.28 + 'px',
+                                        position: 'absolute',
 
                                     }} src={item.image} />
-                                        <div style={{ marginLeft: Width * 0.41 + 'px', position: 'relative', paddingTop: '78px' }}>
+                                        <div style={{ marginLeft: item.type==="MUSTTRY" ? Width*0.45 +'px' : Width*0.35+'px', position: 'relative', paddingTop: '75px' }} >
                                             <div style={{
                                                 height: '20px',
                                                 width: '70px',

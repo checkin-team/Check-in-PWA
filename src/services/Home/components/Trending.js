@@ -48,7 +48,7 @@ function Trending({ home }) {
 
     return (
         <div >
-            <div style={{ marginLeft: '10px', color: '#6d6d6d', marginTop: '40px', fontSize: '14px', }}>
+            <div style={{ marginLeft: '10px', color: '#6d6d6d', marginTop: '40px', fontSize: '14px' }}>
                 <h3>Trending Dishes</h3>
             </div>
             {
@@ -69,7 +69,7 @@ function Trending({ home }) {
                         <ScrollMenu
 
                             data={trendingDishes.data.map(dish =>
-                                <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
+                                <Card style={{ height: "170px", width: "180px", marginRight: "5px", marginLeft: "3px", }}>
                                     <CardMedia
                                         style={{ height: "70px" }}
                                         image={dish.image}
@@ -79,15 +79,19 @@ function Trending({ home }) {
                                         <div style={{ display: "flex", bottom: 0 }}>
                                             <div >{dish.item_type === 0 ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
                                             <div style={{ fontSize: '10px', marginLeft: "6px", marginTop: "5px", marginBottom: "0", color: "#6d6d6d" }}> {dish.name}</div>
-                                            {/* <div></div> */}
-                                        </div>
-                                        {/* </Typography> */}
 
-                                        {/* <Typography variant="subtitle1" color="textSecondary"> */}
+                                        </div>
+
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div style={{ fontSize: '12px', fontWeight: 600, marginLeft: "20px", marginTop: "5px", color: "#6d6d6d" }}>&#8377; {dish.costs?.[0]}</div>
                                             {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
-                                            <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
+                                            <div style={{marginRight: "5px", marginTop: "-6px"}}>   <div
+                                                    style={{ padding: "3px 10px", fontSize: '8px', fontWeight: 700, backgroundColor: "#ff5656", color: "white", borderRadius: "5px" }}
+                                                     
+                                                >
+                                                    ADD 
+                                                    
+                                                </div> </div>
                                             {/* </IconButton> */}
                                         </div>
                                     </div>

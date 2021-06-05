@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 export default function OrderStatus() {
 
     return (
-        <Grid style={{ height: "130px", backgroundColor: "#ffefef" }} container spacing={3}>
+        <Grid style={{ height: "130px", backgroundColor: "#ffefef", marginTop: "15px" }} container spacing={3}>
             <Grid style={{ margin: "10px", marginLeft: '30px', backgroundColor: "white", borderRadius: "6px", height: "70px", marginTop: "30px" }} item xs={7}>
                 <Grid container spacing={1}>
                     <Grid style={{ textAlign: "center" }} item xs={4}>

@@ -1,0 +1,25 @@
+@media screen and (max-height: 825px) {
+  #mobile-image {
+    max-height: 440px;
+  }
+}
+@media screen and (max-height: 815px) {
+  #mobile-image {
+    max-height: 440px;
+  }
+}
+@media screen and (max-height: 740px) {
+  #mobile-image {
+    max-height: 385px;
+  }
+}
+@media screen and (max-height: 670px) {
+  #mobile-image {
+    max-height: 315px;
+  }
+}
+@media screen and (max-height: 642px) {
+  #mobile-image {
+    max-height: 290px;
+  }
+}

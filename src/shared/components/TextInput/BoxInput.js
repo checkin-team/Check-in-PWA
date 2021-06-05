@@ -2,12 +2,18 @@ import React from 'react'
 import { TextField } from "@material-ui/core"
 import {
   withStyles,
-} from '@material-ui/core/styles';
+} from '@material-ui/core/styles'
+import {useLayoutEffect, useRef} from 'react'
 
-
-function BoxInput({ label, ...rest }) {
+function BoxInput({ autoFocus, label,classes, ...rest }) {
+  console.log(autoFocus);
   const CustomTextField = withStyles({
     root: {
+      '& input': {
+        color: 'white',
+        fontSize: "1.3em",
+        textAlign: "center",
+      },
       '& input:valid + fieldset': {
         borderColor: 'white',
         borderWidth: 2,
@@ -17,8 +23,11 @@ function BoxInput({ label, ...rest }) {
         borderWidth: 2,
       },
       '& input:valid:focus + fieldset': {
-        borderWidth: 4,
+        borderWidth: 2,
         padding: '4px !important', // override inline-style
+      },
+      '&:hover + fieldset' : {
+        borderColor: 'white'
       },
       width: "60px"
     },
@@ -27,7 +36,15 @@ function BoxInput({ label, ...rest }) {
     <div>
       <CustomTextField
         variant="outlined"
+        inputProps={{ maxLength: 1 }}
         label={label}
+        value={rest.value}
+        inputProps={{maxLength: 1, minLength: 1, inputMode: 'numeric'}}
+        autoFocus={autoFocus}
+        autoComplete="none"
+        onInput={(e) => {
+          e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+        }}
         {...rest}
       />
     </div>

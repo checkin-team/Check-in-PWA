@@ -8,10 +8,21 @@ import CartItems from '../components/CartItems';
 export const ViewCartPage = () => {
     const history = useHistory()
     const height = window.innerHeight;
+
+    const cartNavStyle = {
+        width: '100vw',
+        borderBottom: "1px solid grey",
+        backgroundColor: '#ececec',
+        height: '50px',
+        position: 'fixed',
+        top: '0',
+        left: '0'
+    }
+
     return (
         <div >
             <div
-                style={{ width: '100%', borderBottom: "1px solid grey", backgroundColor: '#ececec', height: '50px', }}
+                style={cartNavStyle}
             >
                 <div style={{ display: 'flex', }}>
                     <div style={{ marginTop: '15px', marginLeft: '10px' }}>
@@ -24,7 +35,10 @@ export const ViewCartPage = () => {
                     </div>
                 </div>
             </div>
-            <CartItems />
+            <div style={{marginTop: '50px',}}>
+                <CartItems />
+            </div>
+            
             <div style={{
                 width: "100%",
                 height: "45px",

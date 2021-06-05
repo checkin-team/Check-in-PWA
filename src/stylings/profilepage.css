@@ -1,0 +1,60 @@
+@media screen and (max-height: 825px) {
+  #marketimage {
+    height: 72px;
+  }
+  #bottom-image {
+    height: 150px;
+    
+  }
+}
+@media screen and (max-height: 740px) {
+  #logo {
+    width: 70%;
+    height: 70%;
+  }
+  #marketimage {
+    height: 65px;
+  }
+  #bottom-image {
+    height: 140px;
+  }
+}
+@media screen and (max-height: 670px) {
+  #logo {
+    width: 60%;
+    height: 60%;
+  }
+  #bottom-image {
+    height: 120px;
+  }
+}
+@media screen and (max-height: 642px) {
+  #logo {
+    width: 52%;
+    height: 52%;
+  }
+  #marketimage {
+    height: 60px;
+  }
+  #bottom-image {
+    height: 110px;
+  }
+  #checkin {
+    font-size: 24px !important;
+  }
+}
+@media screen and (max-height: 570px) {
+  #marketimage {
+    height: 55px;
+  }
+  #logo {
+    width: 40%;
+    height: 40%;
+  }
+  #checkin {
+    font-size: 22px !important;
+  }
+  #bottom-image {
+    height: 108px;
+  }
+}

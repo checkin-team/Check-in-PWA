@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="111" height="111" viewBox="0 0 111 111">
+    <defs>
+        <filter id="dl19lv8j9a" width="113.6%" height="113.6%" x="-6.8%" y="-4.9%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <path fill="#FFF" d="M0 0H641V1322H0z" transform="translate(-515 -1125)"/>
+            <g fill-rule="nonzero" filter="url(#dl19lv8j9a)" transform="translate(-515 -1125) translate(519 1127)">
+                <circle cx="51.5" cy="51.5" r="51.5" fill="#FF5656"/>
+                <path fill="#0295AA" d="M65 71.803L27 82 27 23.177 65 13z"/>
+                <path fill="#FFF" d="M27 23H76V83H27z"/>
+                <path fill="#E6E9EE" d="M27 54v29h38c-.908-1.397-1.816-2.794-2.74-4.19-.694-1.064-1.403-2.148-2.377-2.773-2.163-1.397-4.953-.125-7.098-1.585-2.526-1.689-3.005-6.359-5.497-8.172-2.229-1.606-5.184-.313-7.478-1.73-2.658-1.669-3.615-6.464-6.471-7.485-.859-.313-1.783-.209-2.658-.376C29.228 56.46 27.924 55.44 27 54z"/>
+                <g fill="#FF5656">
+                    <path d="M8.545 3.729L5.988 9.021 4.729 9.021 2.192 3.729 2.192 9.833.081 9.833.081.146 2.923.146 5.358 5.479 7.794.146 10.636.146 10.636 9.833 8.525 9.833 8.525 3.729zM19.79.146L19.79 2.083 15.081 2.083 15.081 4.083 19.302 4.083 19.302 5.938 15.081 5.938 15.081 7.958 19.932 7.958 19.932 9.875 12.97 9.875 12.97.188 19.79.188 19.79.146zM28.416.146L30.527.146 30.527 9.833 28.416 9.833 23.91 3.75 23.91 9.833 21.799 9.833 21.799.146 23.768.146 28.396 6.396 28.396.146zM35.357 7.333c.345.459.833.667 1.421.667.589 0 1.056-.23 1.421-.667.345-.458.528-1.062.528-1.833V.146h2.11v5.417c0 1.416-.385 2.479-1.136 3.25-.751.75-1.725 1.124-2.902 1.124-1.178 0-2.152-.374-2.903-1.145-.751-.75-1.137-1.834-1.137-3.23V.146h2.111V5.5c-.04.77.122 1.375.487 1.833z" transform="translate(32 30)"/>
+                </g>
+                <path fill="#FFA3A3" d="M32 43H73V44H32zM32 45H73V46H32z"/>
+            </g>
+        </g>
+    </g>
+</svg>

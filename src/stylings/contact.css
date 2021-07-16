@@ -1,0 +1,41 @@
+@media screen and (max-height: 825px) {
+}
+@media screen and (max-height: 740px) {
+}
+@media screen and (max-height: 670px) {
+}
+@media screen and (max-height: 642px) {
+  #div1 {
+    font-size: 25px !important;
+  }
+  #div2 {
+    font-size: 17px !important;
+  }
+  #proceed-button {
+    margin-top: -15px;
+  }
+}
+@media screen and (max-height: 570px) {
+}
+
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
+}
+
+*{
+  -webkit-tap-highlight-color: transparent;
+}

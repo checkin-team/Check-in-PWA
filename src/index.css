@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  color: white !important;
+}
+
+.my-a {
+  color: white !important;
+}
+
+.h-100 {
+  height: 100vh;
+}
+
+.bg-primary {
+  background-color: #ff5656;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fs-25 {
+  font-size: 25;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fs-20 {
+  font-size: 20;
+}
+
+.bottom-right {
+  position: sticky;
+  bottom: 0px;
+  right: 0px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.a-tag {
+  color: white;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.banner-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.banner-card {
+  display: inline-block;
+  margin: 10px;
+}

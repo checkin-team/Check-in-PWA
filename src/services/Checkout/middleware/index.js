@@ -46,7 +46,7 @@ export const  checkout = () =>async (dispatch,getState)=>{
 export const  getSettleBill = () =>async (dispatch,getState)=>{
     try{ dispatch(settleBillReq())
         const session_id= getState().authentication.login.session.payload.pk;
-     const resp= await make_API_call('get',`/sessions/${session_id}/manage/bill/ `)
+     const resp= await make_API_call('get',`/sessions/active/invoice/ `)
        dispatch(settleBillSuccess(resp));
   
       }catch(err){

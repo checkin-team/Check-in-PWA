@@ -11,6 +11,11 @@ const initState = {
     payload:{},
     error:null
   },
+  authenticate: {
+    isLoading:'idle',
+    payload:{},
+    error:null
+  },
   name: {
     isLoading:'idle',
     payload:{},
@@ -91,6 +96,32 @@ export const LoginReducer = (state = initState, action) => {
                     error: action.payload
                   }
                 }
+                case ACTION.AUTHENTICATE_REQ:
+                  return {
+                    ...state,
+                    authenticate:{
+                      ...state.authenticate,
+                      isLoading:true,
+                    }
+                  }
+                  case ACTION.AUTHENTICATE_SUCCESS:
+                    return {
+                      ...state,
+                      authenticate:{
+                        ...state.authenticate,
+                        isLoading:false,
+                        payload: action.payload
+                      }
+                    }
+                    case ACTION.AUTHENTICATE_FAILURE:
+                      return {
+                        ...state,
+                        authenticate:{
+                          ...state.authenticate,
+                          isLoading:false,
+                          error: action.payload
+                        }
+                      }
                 case ACTION.SEND_NAME_REQ:
                   return {
                     ...state,

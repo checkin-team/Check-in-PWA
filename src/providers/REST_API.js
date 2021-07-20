@@ -4,7 +4,7 @@ var state = store.getState();
 store.subscribe(listener)
 
 function select(state) {
-  return state.authentication.login.name.payload.token
+  return state.authentication.login.authenticate.payload.token
 }
 
 function listener() {

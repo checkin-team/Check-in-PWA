@@ -1,4 +1,4 @@
-import { setStateAction,sendPhoneNoReq,sendPhoneNoSuccess,sendPhoneNoFailure,sendNameReq,sendNameFailure,sendNameSuccess,checkOtpReq,checkOtpFailure,checkOtpSuccess, getSessionDetailsReq, getSessionDetailsSuccess, getSessionDetailsFailure, resendOtpReq} from "../actions/actionCreator"
+import { setStateAction,sendPhoneNoReq,sendPhoneNoSuccess,sendPhoneNoFailure,sendNameReq,sendNameFailure,sendNameSuccess,checkOtpReq,checkOtpFailure,checkOtpSuccess, getSessionDetailsReq, getSessionDetailsSuccess, getSessionDetailsFailure, resendOtpReq,authenticateReq,authenticateFailure,authenticateSuccess} from "../actions/actionCreator"
 import fb from "firebase"
 // import firebase from "../../../fbConfig"
 import make_API_call from "../../../providers/REST_API"
@@ -7,7 +7,6 @@ import axios from "axios";
 export const _set_state = (obj) => (dispatch) => {
   dispatch(setStateAction(obj))
 }
-
 
 export const _authenticate_via_number = (number) =>async (dispatch) => {
   try{ dispatch(sendPhoneNoReq()) 
@@ -87,6 +86,42 @@ export const resendOtp =()=>async (dispatch,getState)=>{
   }
 }
 
+export const authenticate =()=>async (dispatch,getState)=>{
+  try{ dispatch(authenticateReq()) 
+    const id_token= getState().authentication.login.otp.payload.ya; 
+    const url = 'https://dev.api.check-in.in/auth/authenticate/';
+    const resp = await fetch(url,{
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({id_token}) // body data type must match "Content-Type" header
+    })
+    const data = await resp.json();
+    dispatch(authenticateSuccess(data));
+    if(data.is_profile_ready===false){
+      dispatch(_set_state({
+        askingProfileDetails: true,
+        askingContact: false,
+        askingOTP: false,
+      }));
+    }else{
+      
+      dispatch(getSessionDetails())
+      dispatch(_set_state({
+        login: {
+          isLoggedIn: true
+        }
+      }))
+    }    
+      // }
+    }catch(err){
+      dispatch(authenticateFailure(err))
+  
+    } 
+}
+
 
 export const checkOtp =(otp)=>async (dispatch)=>{
   try{ dispatch(checkOtpReq()) 
@@ -95,17 +130,16 @@ export const checkOtp =(otp)=>async (dispatch)=>{
     if(resp){
       console.log(resp);
        dispatch(checkOtpSuccess(resp.user));
-       dispatch(_set_state({
-        askingProfileDetails: true,
-        askingContact: false,
-        askingOTP: false,
-      }));
+       dispatch(authenticate());
       }
     }catch(err){
       dispatch(checkOtpFailure(err))
   
     } 
 }
+
+
+
 export const getSessionDetails =()=>async (dispatch)=>{
   try{ dispatch(getSessionDetailsReq()) 
     const resp = await make_API_call('get','/sessions/active/');
@@ -122,18 +156,14 @@ export const getSessionDetails =()=>async (dispatch)=>{
 
 export const sendName =(firstName,lastName,token)=>async (dispatch)=>{
   try{ dispatch(sendNameReq()) 
-    const id_token= token.ya;
-    // const resp = await make_API_call('post','/auth/authenticate/',id_token);
-    const resp = await axios.post('https://dev.api.check-in.in/auth/authenticate/',{id_token:id_token})
-    dispatch(sendNameSuccess({username:`${firstName} ${lastName}`,...resp}));
+    const resp = await make_API_call('put','/users/self/',{first_name:firstName,last_name:lastName});
+    dispatch(sendNameSuccess(resp));
         dispatch(getSessionDetails())
         dispatch(_set_state({
           login: {
             isLoggedIn: true
           }
         }))
- 
-      // }
     }catch(err){
       dispatch(sendNameFailure(err))
   

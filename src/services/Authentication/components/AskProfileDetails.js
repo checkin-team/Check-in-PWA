@@ -15,7 +15,7 @@ function AskProfileDetails(props) {
   const history = useHistory()
   const handleProceed = () => {
     // history.push("/Home")
-    _sendName(firstName,lastName,login.otp.payload);
+    _sendName(firstName,lastName);
     // setState({
     //   login: {
     //     isLoggedIn: true
@@ -126,7 +126,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setState: (obj) => dispatch(_set_state(obj)),
-    _sendName: (fName,lName,token)=> dispatch(sendName(fName,lName,token))
+    _sendName: (fName,lName)=> dispatch(sendName(fName,lName))
   }
 }
 

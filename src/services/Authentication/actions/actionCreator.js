@@ -68,6 +68,20 @@ export const resendOtpReq=(payload)=>({
   type: ACTION.RESEND_OTP_REQ,
 })
 
+export const authenticateReq=(payload)=>({
+  type: ACTION.AUTHENTICATE_REQ,
+})
+
+export const authenticateSuccess= (payload)=>({
+  type: ACTION.AUTHENTICATE_SUCCESS,
+  payload
+})
+
+export const authenticateFailure= (payload)=>({
+  type: ACTION.AUTHENTICATE_FAILURE,
+  payload
+})
+
 
 // export const setLoginState = (payload)=>({
 //   type: ACTION.SET_LOGIN,

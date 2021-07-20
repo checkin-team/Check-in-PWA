@@ -12,17 +12,17 @@ export default function GrandTotal({settleBillDetails}) {
                     <div style={{ margin: '5px' }}>SubTotal</div>
                     <div style={{ margin: '5px' }}>Charges</div>
                     <div style={{ margin: '5px' }}>Taxes</div>
-                    <div style={{ margin: '5px' }}>Promo</div>
+                    {/* <div style={{ margin: '5px' }}>Promo</div> */}
                     <div style={{ margin: '5px' }}>Discount</div>
-                    <div style={{ margin: '5px' }}>Browine Cash</div>
+                    {/* <div style={{ margin: '5px' }}>Browine Cash</div> */}
                 </div>
                 <div>
                     <div style={{ margin: '5px' }}> &#8377;&nbsp;{settleBillDetails?.data?.bill?.subtotal}</div>
                     <div style={{ margin: '5px' }}> &#8377;&nbsp;{settleBillDetails?.data?.bill?.total_charges}</div>
                     <div style={{ margin: '5px' }}> &#8377;&nbsp;{settleBillDetails?.data?.bill?.tax}</div>
-                    <div style={{ margin: '5px' }}> &#8377;&nbsp;{settleBillDetails?.data?.bill?.promo}</div>
+                    {/* <div style={{ margin: '5px' }}> &#8377;&nbsp;{settleBillDetails?.data?.bill?.promo}</div> */}
                     <div style={{ margin: '5px' }}> &#8377;&nbsp;{settleBillDetails?.data?.bill?.discount}</div>
-                    <div style={{ margin: '5px' }}> &#8377;&nbsp;{null}</div>
+                    {/* <div style={{ margin: '5px' }}> &#8377;&nbsp;{null}</div> */}
 
                 </div>
             </div>

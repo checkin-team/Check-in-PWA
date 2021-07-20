@@ -97,6 +97,7 @@ function AskOTP(props) {
       const resend = document.getElementById('resend');
       resend.style.display="block";
     },60000)
+    return clearTimeout(interval)
   },[])
   
   const handleVerify = () => {

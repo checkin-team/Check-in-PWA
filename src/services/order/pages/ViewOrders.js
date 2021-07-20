@@ -62,7 +62,7 @@ const ViewOrders = (props) => {
                 </Grid>
                 <Grid container>
                     <Grid className={classes.container} item lg={12} md={12} sm={12} xs={12}>
-                    {props.orderStatus.data.length<1? (<p>Error Loading Order Status</p>) : props.orderStatus.data.map((item,index)=><OrderCard key={index} data={item} />)}
+                    {props.orderStatus.data.length<1? (<div style={{textAlign:"center",height:"90vh",alignContent:"center",justifyContent:"center"}}><span>No orders yet</span> </div>) : props.orderStatus.data.map((item,index)=><OrderCard key={index} data={item} />)}
                     </Grid>
                 </Grid>
             </Grid>

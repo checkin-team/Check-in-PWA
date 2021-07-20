@@ -80,7 +80,7 @@ function MyRequest(props) {
                     return ( 
                     <div style={{...divStyle,marginTop: '2.87vh'}}>
                         <span style={requestStyle}>{ele.message}</span>
-                        {ele.status === 1?
+                        {ele.status === 10?
                             <span style={{...statusButtonStyle,background: '#32c282'}}>{eventStatus[ele.status]}</span>:
                             <span style={statusButtonStyle}>{eventStatus[ele.status]}</span>
                         }

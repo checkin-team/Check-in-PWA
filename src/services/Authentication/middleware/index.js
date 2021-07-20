@@ -3,6 +3,7 @@ import fb from "firebase"
 // import firebase from "../../../fbConfig"
 import make_API_call from "../../../providers/REST_API"
 import firebase from "../../../firebase";
+import axios from "axios";
 export const _set_state = (obj) => (dispatch) => {
   dispatch(setStateAction(obj))
 }
@@ -122,10 +123,9 @@ export const getSessionDetails =()=>async (dispatch)=>{
 export const sendName =(firstName,lastName,token)=>async (dispatch)=>{
   try{ dispatch(sendNameReq()) 
     const id_token= token.ya;
-    const resp = await make_API_call('post','/auth/authenticate/',id_token);
-    //  if(resp.status===200){
-       dispatch(sendNameSuccess({username:`${firstName} ${lastName}`,...resp}));
-        // dispatch(setLoginState())
+    // const resp = await make_API_call('post','/auth/authenticate/',id_token);
+    const resp = await axios.post('https://dev.api.check-in.in/auth/authenticate/',{id_token})
+    dispatch(sendNameSuccess({username:`${firstName} ${lastName}`,...resp}));
         dispatch(getSessionDetails())
         dispatch(_set_state({
           login: {

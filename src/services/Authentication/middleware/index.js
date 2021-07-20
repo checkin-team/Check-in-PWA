@@ -121,7 +121,7 @@ export const getSessionDetails =()=>async (dispatch)=>{
 
 export const sendName =(firstName,lastName,token)=>async (dispatch)=>{
   try{ dispatch(sendNameReq()) 
-    const resp = await make_API_call('post','/auth/authenticate/',{username:`${firstName} ${lastName}`,id_token:token.ya});
+    const resp = await make_API_call('post','/auth/authenticate/',{id_token:token.ya});
     //  if(resp.status===200){
        dispatch(sendNameSuccess({username:`${firstName} ${lastName}`,...resp}));
         // dispatch(setLoginState())

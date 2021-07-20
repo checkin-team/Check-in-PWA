@@ -35,9 +35,9 @@ const make_API_call = (req_method, path, data = {}) => {
           throw err.response.data;
         });
 
-    case "put":
+    case "patch":
       return axios
-        .put(path, data)
+        .patch(path, data)
         .then((res) => res.data)
         .catch((err) => {
           console.log(err.response);

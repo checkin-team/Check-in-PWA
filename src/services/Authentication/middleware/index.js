@@ -156,7 +156,7 @@ export const getSessionDetails =()=>async (dispatch)=>{
 
 export const sendName =(firstName,lastName,token)=>async (dispatch)=>{
   try{ dispatch(sendNameReq()) 
-    const resp = await make_API_call('put','/users/self/',{first_name:firstName,last_name:lastName});
+    const resp = await make_API_call('patch','/users/self/',{first_name:firstName,last_name:lastName});
     dispatch(sendNameSuccess(resp));
         dispatch(getSessionDetails())
         dispatch(_set_state({

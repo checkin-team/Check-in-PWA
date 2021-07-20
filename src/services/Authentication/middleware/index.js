@@ -124,7 +124,7 @@ export const sendName =(firstName,lastName,token)=>async (dispatch)=>{
   try{ dispatch(sendNameReq()) 
     const id_token= token.ya;
     // const resp = await make_API_call('post','/auth/authenticate/',id_token);
-    const resp = await axios.post('https://dev.api.check-in.in/auth/authenticate/',{id_token})
+    const resp = await axios.post('https://dev.api.check-in.in/auth/authenticate/',{id_token:id_token})
     dispatch(sendNameSuccess({username:`${firstName} ${lastName}`,...resp}));
         dispatch(getSessionDetails())
         dispatch(_set_state({

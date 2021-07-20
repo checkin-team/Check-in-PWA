@@ -12,7 +12,9 @@ import { makeStyles,Typography } from '@material-ui/core';
 export const ViewCartPage = () => {
     const history = useHistory()
     const height = window.innerHeight;
+    const [remarkArr,setRemarkArr]= React.useState([])
 
+    
     React.useEffect(() => {
         console.log(history);
     })
@@ -47,7 +49,7 @@ export const ViewCartPage = () => {
                 </div>
             </div>
             <div style={{marginTop: '50px',}}>
-                <CartItems />
+                <CartItems remarkArr={remarkArr} setRemarkArr={setRemarkArr}/>
             </div>
             
             <div style={{
@@ -60,7 +62,7 @@ export const ViewCartPage = () => {
                 marginTop: height * 0.8 + 'px',
             }}>
 
-                <AbsoluteItems />
+                <AbsoluteItems remarkArr={remarkArr}/>
 
             </div>
         </div>

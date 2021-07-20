@@ -92,22 +92,18 @@ export const _calculateAmount = (cart)=>(dispatch,getState)=>{
 }
 
 
-export const place_order = () =>async (dispatch,getState)=>{
+export const place_order = (remarkArr) =>async (dispatch,getState)=>{
  try{ dispatch(placeOrderReq())
   const items= getState().cart.items.data;
   const id= getState().authentication.login.session.payload.pk;
   var data = [];
-  items.forEach((item)=>{
-    let obj={type_index:item.type_index,quantity:item.quantity,item:item.pk,customizations:[],remarks:"something"};
+  items.forEach((item,index)=>{
+    let obj={type_index:item.type_index,quantity:item.quantity,item:item.pk,customizations:[],remarks:remarkArr[index].remark};
     if(item.customizations.length>1){
       item.customizations.forEach(subItem=>{
-        // let subObj={pk:subItem.pk,fields:[]}
         subItem.fields.forEach(subSubItem=>{
-          // subObj.fields.push({pk:subSubItem.pk})
           obj.customizations.push(subSubItem.pk)
-        
         })
-        // obj.customizations.push(subObj);
       })
     }else{
     }

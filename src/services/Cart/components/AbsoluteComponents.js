@@ -5,11 +5,11 @@ import { connect } from "react-redux"
 import { useHistory } from 'react-router-dom';
 import {place_order} from "../middleware/index"
 import { useEffect } from 'react';
-function AbsoluteItems({ cart,amount,placeOrder }) {
+function AbsoluteItems({ cart,amount,placeOrder,remarkArr }) {
 
   const history = useHistory()
   const handleClick = () => {
-    placeOrder();
+    placeOrder(remarkArr);
   }
   useEffect(()=>{
     if(cart.order.isLoading===false&&cart.order.data==="success"){
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  placeOrder: ()=>dispatch(place_order())
+  placeOrder: (remarkArr)=>dispatch(place_order(remarkArr))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AbsoluteItems)

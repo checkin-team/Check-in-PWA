@@ -11,11 +11,17 @@ import actionTypes from '../actions/actionTypes';
 import {calculateAmount} from "../actions/actionCreator"
 import {addItem,removeItem} from "../actions/actionCreator"
 import { _addItem,_removeItem,_calculateAmount } from '../middleware';
-export const CartItems = ({ cart,Amount ,_add_item,_remove_item}) => {
+export const CartItems = ({ cart,Amount ,_add_item,_remove_item,remarkArr,setRemarkArr}) => {
   const items = cart.items.data
   const width = window.innerWidth
   const [value, setValue] = React.useState(1);
-
+  useEffect(()=>{
+    const remarks= []
+  items.forEach((item)=>{
+    remarks.push({remark:''})
+  })
+  setRemarkArr([...remarks])
+  },[])
   const handleIncrease = (dish) => {
     console.log('item added')
     _add_item(dish,cart)
@@ -59,13 +65,18 @@ export const CartItems = ({ cart,Amount ,_add_item,_remove_item}) => {
     padding: '8px',
     paddingLeft: '15px'
   }
+  const handleChange=(e,index)=>{
+    const arr= [...remarkArr];
+    arr[index].remark=e.target.value;
+    setRemarkArr([...arr]);
+  }
   return (
     <div>
       <div>{items.map((item, index) =>
         <div>
           <div style={{ display: 'flex', }}>
             <div style={{ display: 'flex' }}>
-              {item.is_vegetarian === "veg" ? (<div style={{ marginTop: '20px', marginLeft: '15px' }}>
+              {item.is_vegetarian===null?<div style={{ marginTop: '20px', marginLeft: '15px' }}></div>:item.is_vegetarian === "veg"  ? (<div style={{ marginTop: '20px', marginLeft: '15px' }}>
                 <img src={NonVegIcon} style={{ height: "10px", width: "10px", marginLeft: "5px", marginTop: "5px" }} />
               </div>) : (<div style={{ marginTop: '20px', marginLeft: '20px' }} ><img src={VegIcon} style={{ height: "11px", width: "11px", marginTop: "5px" }} /></div>)}
 
@@ -107,11 +118,11 @@ export const CartItems = ({ cart,Amount ,_add_item,_remove_item}) => {
           </div>
 
           <div>
-            <input style={cartSearchStyle} type="text" placeholder="Write special instructions..." />
+            <input style={cartSearchStyle} type="text" onChange={(e)=>handleChange(e,index)} value={remarkArr[index]?.remark} placeholder="Write special instructions..." />
           </div>
         </div>
       )}
-
+        {JSON.stringify(remarkArr)}
         <div style={{ position: 'fixed', bottom: 50, marginLeft: '65px', color: '#6d6d6d', fontSize: '12px' }}>
           " Does not include extra charges or discounts "
       </div>

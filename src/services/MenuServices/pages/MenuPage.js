@@ -12,6 +12,7 @@ import BottomBar from "../components/AbsoluteComponents";
 import Divider from '@material-ui/core/Divider';
 import dishes from '../components/Dishes'
 import Displaydish from '../components/DisplayDish';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function MenuPage(props) {
     const {
@@ -69,6 +70,11 @@ function MenuPage(props) {
     const handleSearch =(e)=>{
         setSearchTerm(e.target.value);
     }
+    if(menu.menudata.isLoading===true||menu.promos.isLoading===true)
+    return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+    <CircularProgress style={{color:"#ff5656"}} size={50} />
+    </div>
+   
     return (
         <div style={{width: '100vw'}} id="container">
             <div style={menuNavBarStyle} id="MenuNav">

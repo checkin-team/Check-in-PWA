@@ -5,6 +5,7 @@ import OrderCard from "../components/OrderCard";
 import { useHistory } from 'react-router';
 import {connect} from 'react-redux';
 import {SEND_ORDER_STATUS_REQ} from '../middleware/index';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles= makeStyles(theme=>({
     container:{
@@ -51,9 +52,13 @@ const ViewOrders = (props) => {
     const handleBackClick=()=>{
         history.push('/home')
     }
-
+    const {orderStatus} = props
     const classes = useStyles();
-
+    if(orderStatus.isLoading===true)
+    return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+    <CircularProgress style={{color:"#ff5656"}} size={50} />
+    </div>
+   
     return (
         <div>
             <Grid container>

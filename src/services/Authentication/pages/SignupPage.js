@@ -7,6 +7,7 @@ import MarketImage from "../../../assets/authentication/market.png"
 import Logo from "../../../assets/authentication/logo.png"
 import WaveShapeImage from "../../../assets/authentication/path_2_cropped.jpg"
 import BottomDisplay from "../../../assets/authentication/bottomdisplay.jpg"
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 import { useSelector } from "react-redux"
@@ -21,7 +22,7 @@ import { _set_state } from '../middleware'
 
 function SignupPage(props) {
 
-  const { state,setState } = props
+  const { state,setState,login } = props
   const useStyles = makeStyles((theme) => ({
     root: {
       height: '100vh',
@@ -65,6 +66,10 @@ function SignupPage(props) {
   
   // if (state.showLandingPage)
   //   return <LandingPage />
+  if(login.contact.isLoading===true||login.otp.isLoading===true||login.name.isLoading===true||login.authenticate.isLoading===true||login.session.isLoading===true)
+  return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+  <CircularProgress style={{color:"#ff5656"}} size={50} />
+  </div>
   return (
     <div style={{backgroundColor: "#ff5656"}}>
       <Grid component="main"  className={classes.root} container>
@@ -134,7 +139,8 @@ function SignupPage(props) {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    state: state.authentication.signup
+    state: state.authentication.signup,
+    login: state.authentication.login
   }
 }
 

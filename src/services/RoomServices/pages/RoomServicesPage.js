@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import BackButton from '../../../assets/RoomServices/BackButton.svg';
 import MyRequest from '../components/MyRequest';
 import { loadRequestData } from '../../Home/middleware/index';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const RoomServicesPage = props => {
 
     const navBarStyle = {
@@ -44,6 +46,11 @@ const RoomServicesPage = props => {
         props.loadRequestData_();
     },[])
 
+    if(state.requestData.isLoading===true)
+    return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+    <CircularProgress style={{color:"#ff5656"}} size={50} />
+    </div>
+  
     return (
         <React.Fragment>
             <div style={navBarStyle}>

@@ -12,6 +12,8 @@ import { _load_orders, _load_restaurent_details, _load_trending_dishes } from '.
 import { connect } from "react-redux";
 import {useHistory} from 'react-router-dom';
 import {loadRequestData} from '../middleware/index';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 function HomePage(props) {
     const { loadRestaurentDetails, state, loadOrders, loadTrendingDishes ,loadRequestData_,login} = props
     const { details } = state
@@ -48,6 +50,11 @@ function HomePage(props) {
     //     if (details.data.restaurant.pk)
     //         loadTrendingDishes()
     // }, [details.data.restaurant.pk])
+    if(state.details.isLoading===true)
+    return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+    <CircularProgress style={{color:"#ff5656"}} size={50} />
+    </div>
+  
     return (
         <div>
             <div >

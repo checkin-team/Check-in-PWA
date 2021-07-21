@@ -12,6 +12,7 @@ import React from "react";
 import {PAYMENT_SUCCESS_REQ} from '../middleware/index';
 import dateFormat from "dateformat";
 import nonVeg from '../../../assets/home/nonvegicon.jpg';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles= makeStyles(theme=>({
   mainContainer:{
@@ -240,11 +241,15 @@ function PaymentSuccessful(props) {
 
   React.useEffect(()=>{
     props.SEND_PAYMENT_SUCCESS_REQ();
-    console.log('[PaymentSuccessful]',props.paymentDetails);
+    // console.log('[PaymentSuccessful]',props.paymentDetails);
     setCheckedOut(dateFormat(paymentDetails?.data?.checked_out, "dddd, mmmm dS, yyyy, h:MM:ss TT"))
   },[])
 
-  
+  if(paymentDetails.isLoading===true)
+  return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+  <CircularProgress style={{color:"#ff5656"}} size={50} />
+  </div>
+
   return (
     <div>
     <Grid container className={classes.mainContainer}>

@@ -8,6 +8,7 @@ import GrandTotal from '../components/GrandTotal';
 import Button from '../.././../shared/components/Button/Basic'
 import { getSettleBill,checkout,razorpayCall,razorpayCallback } from '../middleware';
 import { useEffect } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Razorpay Load Script function
 function loadScript(src) {
@@ -85,6 +86,12 @@ const CheckoutPage = (props) => {
   React.useEffect(()=>{
   props._getSettleBill()      
   },[props.applyPromo,props.removePromo])
+ 
+  if(props.getSettleBillDeatils.isLoading===true||props.razorpay.isLoading===true||props.checkout.isLoading===true)
+  return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
+  <CircularProgress style={{color:"#ff5656"}} size={50} />
+  </div>
+
   
   return (
     <div>

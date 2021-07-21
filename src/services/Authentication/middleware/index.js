@@ -4,6 +4,7 @@ import fb from "firebase"
 import make_API_call from "../../../providers/REST_API"
 import firebase from "../../../firebase";
 import axios from "axios";
+import cookies from 'js-cookie';
 export const _set_state = (obj) => (dispatch) => {
   dispatch(setStateAction(obj))
 }
@@ -99,6 +100,7 @@ export const authenticate =()=>async (dispatch,getState)=>{
       body: JSON.stringify({id_token}) // body data type must match "Content-Type" header
     })
     const data = await resp.json();
+    cookies.set('user',data);
     dispatch(authenticateSuccess(data));
     if(data.is_profile_ready===false){
       dispatch(_set_state({
@@ -121,6 +123,24 @@ export const authenticate =()=>async (dispatch,getState)=>{
   
     } 
 }
+
+export const cookieAuthenticate =()=>async (dispatch,getState)=>{
+  try{ dispatch(authenticateReq()) 
+    const data= cookies.getJSON('user')
+    dispatch(authenticateSuccess(data));
+    dispatch(getSessionDetails())
+      dispatch(_set_state({
+        login: {
+          isLoggedIn: true
+        }
+      }))
+     
+    }catch(err){
+      dispatch(authenticateFailure(err))
+  
+    } 
+}
+
 
 
 export const checkOtp =(otp)=>async (dispatch)=>{

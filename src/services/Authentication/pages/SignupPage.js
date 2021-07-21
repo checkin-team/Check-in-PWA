@@ -15,15 +15,15 @@ import AskContact from '../components/AskContact'
 import AskOTP from '../components/AskOTP'
 import AskProfileDetails from '../components/AskProfileDetails'
 import LandingPage from '../components/LandingPage'
-import { _authenticate_via_number } from '../middleware';
+import { cookieAuthenticate, _authenticate_via_number } from '../middleware';
 import '../../../stylings/profilepage.css'
 import make_API_call from '../../../providers/REST_API';
 import { _set_state } from '../middleware'
-
+import Cookies from 'js-cookie';
 function SignupPage(props) {
 
   const [loading,setLoading]= React.useState(true);
-  const { state,setState,login } = props
+  const { state,setState,login,cookie_authenticate } = props
   const useStyles = makeStyles((theme) => ({
     root: {
       height: '100vh',
@@ -66,6 +66,12 @@ function SignupPage(props) {
     setLoading(false);
   },[])
   
+  useEffect(()=>{
+    if(Cookies.getJSON('user')){
+      cookie_authenticate();
+    }
+  },[])
+
   // if (state.showLandingPage)
   //   return <LandingPage />
   if(login.contact.isLoading===true||login.otp.isLoading===true||login.name.isLoading===true||login.authenticate.isLoading===true||login.session.isLoading===true||loading===true)
@@ -149,8 +155,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     _authenticate_via_number: (number) => dispatch(_authenticate_via_number(number)),
-    setState: (obj) => dispatch(_set_state(obj))
-  
+    setState: (obj) => dispatch(_set_state(obj)),
+    cookie_authenticate: ()=>dispatch(cookieAuthenticate()),
+    
   }
 }
 

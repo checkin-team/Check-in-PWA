@@ -19,7 +19,7 @@ import {
     removePromoSuccess
   } from '../actions/actionCreator';
 import { checkoutReq,checkoutSuccess,checkoutFailure } from "../actions/actionCreator";
-
+import Cookies from "js-cookie";
 // export const SEND_SETTLE_BILL_DETAILS_REQ = (id) => (dispatch) => {
     
 //     return make_API_call('get',`/promos/active/restaurants/${id}`)
@@ -36,6 +36,7 @@ import { checkoutReq,checkoutSuccess,checkoutFailure } from "../actions/actionCr
 export const  checkout = () =>async (dispatch,getState)=>{
     try{ dispatch(checkoutReq())
      const resp= await make_API_call('post',"/sessions/active/request/checkout/",{payment_mode:"rzrpay"})
+        Cookies.remove('user');
        dispatch(checkoutSuccess("success"));
         dispatch(razorpayCall())
       }catch(err){

@@ -12,6 +12,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Alert from '@material-ui/lab/Alert';
+import checkin from '../../../assets/authentication/logo.png'
+
 // Razorpay Load Script function
 function loadScript(src) {
 	return new Promise((resolve) => {
@@ -60,24 +62,25 @@ const CheckoutPage = (props) => {
 			alert('Razorpay SDK failed to load. Are you online?')
 			return
 		}
-
-		const options = {
+   const name= props.userDetails.data.full_name;
+   const email= props.userDetails.data.email;
+   const phone_number= props.userDetails.data.phone_no.substr(1);
+  const options = {
 			key: 'rzp_test_edAXAbPED9Pl1G',
 			currency: props.razorpay.data.currency,
 			amount: (props.getSettleBillDeatils.data.bill?.total*100).toString(),
 			order_id: props.razorpay.data.order_id,
 			name: 'Payment',
 			description: 'Please Pay',
-			image: 'http://localhost:1337/logo.svg',
+			image: checkin,
 			handler: function (response) {
         console.log(response);
 				props._razorpayCallback(response);
 			},
 			prefill: {
-				// name:props.getSettleBillDeatils.data.host.User.display_name,
-        name: "rahul",
-				email:props.razorpay.data.email,
-				phone_number: props.razorpay.data.phone
+        name: name,
+				email:email,
+				contact: phone_number,
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
@@ -220,7 +223,7 @@ const mapStateToProps = state => ({
   callback: state.checkout.callback,
   applyPromo: state.checkout.applyPromo,
   removePromo: state.checkout.removePromo,
-
+  userDetails: state.home.userDetails,
 });
 
 const mapDispatchToProps = dispatch => ({

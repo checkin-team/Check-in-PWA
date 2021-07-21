@@ -126,7 +126,7 @@ function TextFieldSizes(props) {
             e.preventDefault();
         })
     },[]);
-
+    
     return (
 
         
@@ -134,7 +134,7 @@ function TextFieldSizes(props) {
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
                 <div style={{ marginLeft: '10px', color: '#6d6d6d', fontSize: '14px', letterSpacing: '0.8px', marginBottom: '0px' }}><h3>Services</h3></div>
                 <div style={{ marginTop: '-16px', marginRight: '10px' }} >
-                    <Badge style={{ marginBottom: "-40px", marginLeft: "100px" }} badgeContent={"!"} color="error">
+                    <Badge style={{ marginBottom: "-40px", marginLeft: "100px" }} badgeContent={props.requestData.data.filter(i=>i.status==5).length} color="error">
                     </Badge>
                     <RoundedButton onClick={goBack} size="small" style={{ backgroundColor: "#0295aa", marginBottom: '25px' }}>My Requests</RoundedButton>
                 </div>
@@ -180,6 +180,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
     requests : state.home.serviceRequest,
+    requestData: state.home.requestData,
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TextFieldSizes);

@@ -92,3 +92,16 @@ export const loadRequestFailure=(payload)=>({
   payload,
 })
 
+export const getUserReq=()=>({
+  type: ACTION.GET_USER_DETAILS_REQ,
+})
+
+export const getUserSuccess=(payload)=>({
+  type: ACTION.GET_USER_DETAILS_SUCCESS,
+  payload
+})
+export const getUserFailure=(payload)=>({
+  type: ACTION.GET_USER_DETAILS_FAILURE,
+  payload,
+})
+

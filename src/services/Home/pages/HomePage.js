@@ -8,14 +8,14 @@ import CartIcon from '../../../assets/home/shopping_cart.svg';
 import Badge from '@material-ui/core/Badge';
 import BillingBottomBar from '../components/BillingBottomBar';
 // import Box from '@material-ui/core/Box'
-import { _load_orders, _load_restaurent_details, _load_trending_dishes } from '../middleware'
+import { _load_orders, _load_restaurent_details, _load_trending_dishes, _load_user_details } from '../middleware'
 import { connect } from "react-redux";
 import {useHistory} from 'react-router-dom';
 import {loadRequestData} from '../middleware/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function HomePage(props) {
-    const { loadRestaurentDetails, state, loadOrders, loadTrendingDishes ,loadRequestData_,login} = props
+    const { loadRestaurentDetails, state, loadOrders, loadTrendingDishes ,loadRequestData_,login,getUser} = props
     const { details } = state
     let windowHeight = window.innerHeight;
     let windowWidth = window.innerWidth;
@@ -25,15 +25,15 @@ function HomePage(props) {
         loadRestaurentDetails()
         loadOrders()
         loadTrendingDishes()
-        // make_API_call('get','/menus/restaurants/11/available/')
         loadRequestData_();
-        // handleManifest();
+        getUser();
     }, [])
     useEffect(() => {
         loadRestaurentDetails()
         loadOrders()
         loadTrendingDishes()
         loadRequestData_();
+        getUser();
     }, [login.session.isLoading])
 
     const cartStyle = {
@@ -106,6 +106,7 @@ const mapDispatchToProps = (dispatch) => ({
     loadOrders: () => dispatch(_load_orders()),
     loadTrendingDishes: () => dispatch(_load_trending_dishes()),
     loadRequestData_: ()=>dispatch(loadRequestData()),
+    getUser: ()=>dispatch(_load_user_details())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(HomePage)

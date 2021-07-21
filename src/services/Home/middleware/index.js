@@ -20,6 +20,9 @@ import {
   loadRequestReq,
   loadRequestSuccess,
   loadRequestFailure,
+  getUserReq,
+  getUserSuccess,
+  getUserFailure,
 } from "../actions/actionCreator"
 
 export const _GET_ORDER_STATUS = () => (dispatch) => {
@@ -100,6 +103,18 @@ export const _load_orders = () => (dispatch, getState) => {
     })
 
 }
+
+export const _load_user_details = () => (dispatch, getState) => {
+  dispatch(getUserReq())
+  return make_API_call("get", "/users/self/")
+    .then(res => {
+      dispatch(getUserSuccess(res))
+    }).catch((err) => {
+      dispatch(getUserFailure(err))
+    })
+}
+
+
 export const _load_trending_dishes = () => (dispatch, getState) => {
   dispatch(loadTrendingDishesReq())
   // const restaurant_id = getState().home.details.data.restaurant.pk

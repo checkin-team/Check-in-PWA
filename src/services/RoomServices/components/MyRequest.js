@@ -67,8 +67,8 @@ function MyRequest(props) {
 
     // }
     const eventStatus={
-        0:'NONE',
-        1:'STATUS_OPEN',
+        0:'None',
+        1:'New',
         5:'In PROGRESS',
         6:'COOKED',
         10:'DONE',
@@ -81,8 +81,8 @@ function MyRequest(props) {
                     <div style={{...divStyle,marginTop: '2.87vh'}}>
                         <span style={requestStyle}>{ele.message}</span>
                         {ele.status === 10?
-                            <span style={{...statusButtonStyle,background: '#32c282'}}>{eventStatus[ele.status]}</span>:
-                            <span style={statusButtonStyle}>{eventStatus[ele.status]}</span>
+                           <span style={{...statusButtonStyle,background: '#32c282'}}>{eventStatus[ele.status]}</span>:
+                           (ele.status!==0) && <span style={statusButtonStyle}>{eventStatus[ele.status]}</span>
                         }
                     </div>
                     )

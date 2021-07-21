@@ -36,7 +36,6 @@ import Cookies from "js-cookie";
 export const  checkout = () =>async (dispatch,getState)=>{
     try{ dispatch(checkoutReq())
      const resp= await make_API_call('post',"/sessions/active/request/checkout/",{payment_mode:"rzrpay"})
-        Cookies.remove('user');
        dispatch(checkoutSuccess("success"));
         dispatch(razorpayCall())
       }catch(err){
@@ -74,6 +73,7 @@ export const  getSettleBill = () =>async (dispatch,getState)=>{
       signature: response.razorpay_signature,
       extra_data: {...response}
       })
+      Cookies.remove('user');
        dispatch(razorpayCallbackSuccess(resp));
    }catch(err){
       dispatch(razorpayCallbackFailure(err));

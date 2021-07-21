@@ -3,33 +3,7 @@ import ACTION from "../actions/actionTypes"
 const initState = {
     details: {
         isLoading: 'idle',
-        data: {
-            "pk": 0,
-            "bill": "",
-            "checked_in": "",
-            "checked_out": null,
-            "restaurant": {
-                "pk": "",
-                "display_name": "",
-                "display_pic_url": ""
-            },
-            "is_public": true,
-            "host": null,
-            "customers": [
-                {
-                    "pk": 0,
-                    "user": {
-                        "pk": 0,
-                        "display_name": "",
-                        "display_pic_url": null
-                    },
-                    "is_owner": true,
-                    "is_payee": false,
-                    "is_accepted": true
-                }
-            ],
-            "is_requested_checkout": false
-        },
+        data: {},
         error: ""
     },
     cart: {},
@@ -45,7 +19,12 @@ const initState = {
         isLoading:'idle',
         data:[],
         error:'',
-    }
+    },
+    userDetails: {
+        isLoading: 'idle',
+        data: {},
+        error: {},
+    },
     
 }
 
@@ -186,7 +165,36 @@ export const HomeReducer = (state = initState, action) => {
                     error: ""
                 }
             }
-
+            case ACTION.GET_USER_DETAILS_REQ:
+                return {
+                    ...state,
+                    userDetails: {
+                        ...state.userDetails,
+                        isLoading: true,
+                        error: ""
+                    }
+                }
+    
+            case ACTION.GET_USER_DETAILS_SUCCESS:
+                return {
+                    ...state,
+                    userDetails: {
+                        isLoading: false,
+                        data: action.payload,
+                        error: {}
+                    }
+                }
+    
+            case ACTION.GET_USER_DETAILS_FAILURE:
+                return {
+                    ...state,
+                    userDetails: {
+                        isLoading: false,
+                        data: [],
+                        error: {...action.payload}
+                    }
+                }
+    
 
         default:
             return state

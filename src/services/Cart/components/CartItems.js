@@ -122,7 +122,7 @@ export const CartItems = ({ cart,Amount ,_add_item,_remove_item,remarkArr,setRem
           </div>
         </div>
       )}
-        {JSON.stringify(remarkArr)}
+        {/* {JSON.stringify(remarkArr)} */}
         <div style={{ position: 'fixed', bottom: 50, marginLeft: '65px', color: '#6d6d6d', fontSize: '12px' }}>
           " Does not include extra charges or discounts "
       </div>

@@ -17,10 +17,11 @@ import LandingPage from '../components/LandingPage'
 import { _authenticate_via_number } from '../middleware';
 import '../../../stylings/profilepage.css'
 import make_API_call from '../../../providers/REST_API';
+import { _set_state } from '../middleware'
 
 function SignupPage(props) {
 
-  const { state } = props
+  const { state,setState } = props
   const useStyles = makeStyles((theme) => ({
     root: {
       height: '100vh',
@@ -52,8 +53,18 @@ function SignupPage(props) {
   }));
   const classes = useStyles();
   const isActive = useMediaQuery('(min-width:600px)');
-  if (state.showLandingPage)
-    return <LandingPage />
+  
+  useEffect(()=>{
+    setState({
+      showLandingPage: false,
+      askingProfileDetails: false,
+      askingContact: true,
+      askingOTP: false
+    })
+  },[])
+  
+  // if (state.showLandingPage)
+  //   return <LandingPage />
   return (
     <div style={{backgroundColor: "#ff5656"}}>
       <Grid component="main"  className={classes.root} container>
@@ -129,8 +140,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    _authenticate_via_number: (number) => dispatch(_authenticate_via_number(number))
+    _authenticate_via_number: (number) => dispatch(_authenticate_via_number(number)),
+    setState: (obj) => dispatch(_set_state(obj))
+  
   }
 }
 
-export default connect(mapStateToProps, null)(SignupPage)
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage)

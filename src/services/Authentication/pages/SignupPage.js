@@ -22,6 +22,7 @@ import { _set_state } from '../middleware'
 
 function SignupPage(props) {
 
+  const [loading,setLoading]= React.useState(true);
   const { state,setState,login } = props
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,11 +63,12 @@ function SignupPage(props) {
       askingContact: true,
       askingOTP: false
     })
+    setLoading(false);
   },[])
   
   // if (state.showLandingPage)
   //   return <LandingPage />
-  if(login.contact.isLoading===true||login.otp.isLoading===true||login.name.isLoading===true||login.authenticate.isLoading===true||login.session.isLoading===true)
+  if(login.contact.isLoading===true||login.otp.isLoading===true||login.name.isLoading===true||login.authenticate.isLoading===true||login.session.isLoading===true||loading===true)
   return <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>
   <CircularProgress style={{color:"#ff5656"}} size={50} />
   </div>

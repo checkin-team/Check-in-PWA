@@ -9,7 +9,9 @@ import Button from '../.././../shared/components/Button/Basic'
 import { getSettleBill,checkout,razorpayCall,razorpayCallback } from '../middleware';
 import { useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Alert from '@material-ui/lab/Alert';
 // Razorpay Load Script function
 function loadScript(src) {
 	return new Promise((resolve) => {
@@ -28,7 +30,29 @@ function loadScript(src) {
 const CheckoutPage = (props) => {
   const history = useHistory()
  
+  const [razorpayAlert,setRazorpayAlert]= React.useState(false);
+  const [checkoutAlert,setCheckoutAlert]= React.useState(false);
+  const [callbackAlert,setCallbackAlert]= React.useState(false);
+  const [promoAlert,setPromoAlert]= React.useState(false);
+  
+  React.useEffect(()=>{
+    if(props.razorpay.error.title){
+      setRazorpayAlert(true)
+    }
+    if(props.checkout.error.title){
+      setCheckoutAlert(true)
+    }
+    if(props.callback.error.title){
+      setCallbackAlert(true)
+    }
+    if(props.applyPromo.error.title){
+      setPromoAlert(true)
+    }
+  },[props.razorpay.error,props.checkout.error,props.callback.error,props.applyPromo.error])
+  
+  
   // Razorpay function for payment popup 
+  
   async function displayRazorpay() {
 		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
@@ -106,6 +130,78 @@ const CheckoutPage = (props) => {
         <div style={{ color: "#6d6d6d", fontSize: '15px', margin: '25px 0px 0px 15px' }}>
           Bill Details
         </div>
+        {razorpayAlert&&<Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setRazorpayAlert(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          severity="error"
+        >
+          {props.razorpay.error.title}
+        </Alert>}
+
+        {checkoutAlert&&<Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setCheckoutAlert(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          severity="error"
+        >
+          {props.checkout.error.title}
+        </Alert>}
+
+        {callbackAlert&&<Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setCallbackAlert(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          severity="error"
+        >
+          {props.callback.error.title}
+        </Alert>}
+
+        {promoAlert&&<Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setPromoAlert(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          severity="error"
+        >
+          {props.applyPromo.error.title}
+        </Alert>}
+
         <div><SettleBill settleBillDetails={props.getSettleBillDeatils}/></div>
         <div> <Promos /></div>
         <div><GrandTotal settleBillDetails={props.getSettleBillDeatils} /></div>

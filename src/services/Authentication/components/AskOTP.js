@@ -123,7 +123,7 @@ function AskOTP(props) {
             <Grid item xs={12} >
               <div style={{ fontSize: 20, textAlign: "left" }} ><span style={{ fontWeight: 100 }}>OTP sent to </span>+91{props.login?.contact?.payload?.phoneNo}</div>
             </Grid>
-            <Grid item xs={0} style={{marginLeft: 0,paddingLeft: 0}} >
+            <Grid item xs={12} style={{marginLeft: 0,paddingLeft: 0}} >
               <Grid spacing={3} container >
                 <Grid className="text-left" item xs={2} >
                   <BoxInput autoFocus={activeInput === 0} value={values[0]} onChange={handleOnChange} onFocus={(e) => handleOnFocus(0, e)} onKeyDown={handleOnKeyDown}  />

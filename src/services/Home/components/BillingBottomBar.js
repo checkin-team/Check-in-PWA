@@ -25,7 +25,7 @@ function BillingBottomBar(props) {
         <div style={{ color: "#fff"}} >
             <div style={{ display: "flex", justifyContent: "space-between", marginRight: "5px" }} >
                 <div style={{ margin: "8px", display: "flex",alignItems:"center" }}> <ReceiptOutlinedIcon /><div style={{ marginTop: "3px", marginLeft: "6px" }}>Total: &#8377;{props?.settleBill?.data?.bill?.total}</div> </div>
-                <div onClick={() => history.push('/settlebill')} style={{ display:"flex",alignItems:"center"}}>Settle Bill &nbsp; <FastForwardIcon fontSize="small" /></div>
+                <div onClick={() => history.push('/settlebill')} style={{ display:"flex",alignItems:"center"}}>Check Out &nbsp; <FastForwardIcon fontSize="small" /></div>
             </div>
         </div >
     )

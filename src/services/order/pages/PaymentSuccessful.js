@@ -264,7 +264,7 @@ function PaymentSuccessful(props) {
           <Typography className={classes.location} variant="h6">{paymentDetails?.data?.restaurant?.location?.address}</Typography>
         </Grid>
         <Grid className={classes.rightContainer} item lg={2} md={2} sm={2} xs={3}>
-        <span><img src={share} className={classes.share} alt="share" /></span>
+        
 
         </Grid>
         

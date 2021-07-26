@@ -255,18 +255,19 @@ function PaymentSuccessful(props) {
     <Grid container className={classes.mainContainer}>
       <Grid  item lg={12} md={12} sm={12} xs={12}>
         <Grid container>
-        <Grid className={classes.arrowContainer} item lg={1} md={1} sm={2} xs={2}>
+        {/* <Grid className={classes.arrowContainer} item lg={1} md={1} sm={2} xs={2}>
           <ArrowBackIcon onClick={() => history.push('/home')} className={classes.arrow} />
           
-        </Grid>
-        <Grid item  lg={9} md={9} sm={8} xs={7}>
+        </Grid> */}
+        {/* <Grid item  lg={9} md={9} sm={8} xs={7}> */}
+        <Grid item  lg={12} md={12} sm={12} xs={12}>
            <Typography className={classes.name} variant="h3">{paymentDetails?.data?.restaurant?.name}</Typography>
           <Typography className={classes.location} variant="h6">{paymentDetails?.data?.restaurant?.location?.address}</Typography>
         </Grid>
-        <Grid className={classes.rightContainer} item lg={2} md={2} sm={2} xs={3}>
-        {/* <span><img src={share} className={classes.share} alt="share" /></span> */}
+        {/* <Grid className={classes.rightContainer} item lg={2} md={2} sm={2} xs={3}>
+        <span><img src={share} className={classes.share} alt="share" /></span>
 
-        </Grid>
+        </Grid> */}
         
         </Grid>
           <Grid container className={classes.paymentContainer}>
@@ -426,6 +427,10 @@ function PaymentSuccessful(props) {
       </Grid>:null}
     </Grid>
     <Divider></Divider>
+       <div style={{position:"fixed",bottom:"0",width:"100%"}}>
+      <p style={{display:"flex",justifyContent:"center"}}><h4 style={{color:"#6d6d6d"}}> Checked Out Successfully!</h4></p>
+
+       </div>     
     </div>
   );
 }

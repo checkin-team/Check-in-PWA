@@ -122,10 +122,11 @@ const OrderCard = ({data}) => {
     }
     var interval= setInterval(()=>{
         calcTime();
-    },60000)
+    },1000)
 
     useEffect(()=>{
-       return clearInterval(interval) 
+       calcTime();
+        return clearInterval(interval) 
     },[])
     return (
         <>

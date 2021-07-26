@@ -6,7 +6,7 @@ import AbsoluteItems from '../components/AbsoluteComponents'
 import CartItems from '../components/CartItems';
 import complete from "../../../assets/order/complete.gif"
 import { makeStyles,Typography } from '@material-ui/core';
-
+import BackButton from '../../../assets/RoomServices/BackButton.svg';
 
 
 export const ViewCartPage = () => {
@@ -31,13 +31,41 @@ export const ViewCartPage = () => {
         left: '0',
         zIndex:"20",
     }
+
+    const navBarStyle = {
+        paddingTop: "2.3vh",
+        paddingLeft: "4.78vw",
+        paddingRight: '6.25vw',
+        paddingBottom: '1vh',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        zIndex: '100',
+        background: 'white',
+        minWidth: '100vw'
+    }
+
+    const backButtonStyle = {
+        paddingRight : "3.28vw",
+        width: "3.75vw",
+        height: "3.7vh",
+        display : "inline"
+    }
+
+    const headingStyle = {
+        display: 'inline',
+        fontSize : "3.7vh",
+        verticalAlign : "bottom",
+        color: '#6d6d6d',
+        fontFamily: "JosefinSans-Regular"
+    }
     return (
         <div >
             
             <div
-                style={cartNavStyle}
+                // style={cartNavStyle}
             >
-                <div style={{ display: 'flex', }}>
+                {/* <div style={{ display: 'flex', }}>
                     <div style={{ marginTop: '15px', marginLeft: '10px' }}>
                         <ArrowBackIosIcon style={{ color: '#6d6d6d',cursor:"pointer" }} onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/menu")} />
                     </div>
@@ -46,7 +74,12 @@ export const ViewCartPage = () => {
                             Cart
                         </div>
                     </div>
+                </div> */}
+                <div style={navBarStyle}>
+                    <img  onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/menu")} src={BackButton} alt="Back Button" style={backButtonStyle} />
+                    <p style={headingStyle}>Cart</p>
                 </div>
+                
             </div>
             <div style={{marginTop: '50px',}}>
                 <CartItems remarkArr={remarkArr} setRemarkArr={setRemarkArr}/>

@@ -4,14 +4,17 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import OrderCard from "../components/OrderCard";
 import { useHistory } from 'react-router';
 import {connect} from 'react-redux';
+import BackButton from '../../../assets/RoomServices/BackButton.svg';
 import {SEND_ORDER_STATUS_REQ} from '../middleware/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles= makeStyles(theme=>({
     container:{
         padding: "1rem 4rem",
+        marginTop: '6vh',
+        // marginLeft: '-2.6vw',
         [theme.breakpoints.down('sm')]:{
-            padding: '0rem 2rem',
+            padding: '0rem 0rem',
         }
     },
     heading:{
@@ -48,6 +51,35 @@ const ViewOrders = (props) => {
     
     // },[props.orderStatus])
 
+    const navBarStyle = {
+        paddingTop: "2.3vh",
+        paddingLeft: "4.78vw",
+        paddingRight: '6.25vw',
+        paddingBottom: '1vh',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        zIndex: '100',
+        background: 'white',
+        minWidth: '100vw'
+    }
+
+    const backButtonStyle = {
+        paddingRight : "3.28vw",
+        width: "3.75vw",
+        height: "3.7vh",
+        display : "inline"
+    }
+
+    const headingStyle = {
+        display: 'inline',
+        fontSize : "3.7vh",
+        verticalAlign : "bottom",
+        color: '#6d6d6d',
+        fontFamily: "JosefinSans-Regular"
+    }
+
+
     const history= useHistory();
     const handleBackClick=()=>{
         history.push('/home')
@@ -62,9 +94,13 @@ const ViewOrders = (props) => {
     return (
         <div>
             <Grid container>
-                <Grid className={classes.container} item lg={12} md={12} sm={12} xs={12}>
+                {/* <Grid className={classes.container} item lg={12} md={12} sm={12} xs={12}>
                     <Typography className={classes.heading} variant="h3"><ArrowBackIosIcon onClick={handleBackClick} style={{cursor:"pointer"}} /> Order Status</Typography>
-                </Grid>
+                </Grid> */}
+                <div style={navBarStyle}>
+                    <img onClick={handleBackClick} src={BackButton} alt="Back Button" style={backButtonStyle} />
+                    <p style={headingStyle}>Order Status</p>
+                </div>
                 <Grid container>
                     <Grid className={classes.container} item lg={12} md={12} sm={12} xs={12}>
                     {props.orderStatus.data.length<1? (<div style={{textAlign:"center",height:"90vh",alignContent:"center",justifyContent:"center"}}><span>No orders yet</span> </div>) : props.orderStatus.data.map((item,index)=><OrderCard key={index} data={item} />)}

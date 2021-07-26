@@ -13,6 +13,7 @@ import { addItem, removeItem } from "../../Cart/actions/actionCreator";
 import { connect } from 'react-redux';
 import ShowDialog from './ShowDialog';
 import  '../../../stylings/displaydishstyle.css';
+import White from '../../../assets/home/White.jpg';
 import {calculateAmount} from "../../Cart/actions/actionCreator"
 import {_addItem,_removeItem,_calculateAmount} from "../../Cart/middleware/index"
 
@@ -84,39 +85,21 @@ function Displaydish(props) {
        Items.filter(elem=>{
                 if(searchTerm=='') return elem
                 else if(elem.name.toLowerCase().includes(searchTerm.toLowerCase()))return elem
-            }).length===0?null: <div id = {props.obj.name} style={{ marginBottom: '30px', width: "100%"}}>
-            <h3 style={{ color: '#6d6d6d', marginLeft: "10px" }}>&nbsp;{props.obj.name}</h3>
+            }).length===0?null: <div id = {props.obj.name} style={{ marginBottom: '-70px', width: "100%"}}>
+            <h3 style={{ color: '#6d6d6d', marginLeft: "10px", marginTop: '20px' }}>&nbsp;{props.obj.name}</h3>
 
             {Items.filter(elem=>{
                 if(searchTerm=='') return elem
                 else if(elem.name.toLowerCase().includes(searchTerm.toLowerCase()))return elem
             }).map((item, index) =>
-                <div style={{ height: '150px', width: "100%", marginLeft: "8px"}}>
+                <div style={{height: '150px',width: "100%", marginLeft: "8px"}}>
                     <div style={{ display: 'flex', justifyContent: "space-between" }}>
                         <div style={{ display: 'flex', marginLeft: "5px" }} >
-                            <div>  {item.is_vegetarian===null?null:item.is_vegetarian === "veg" ?
+                            <div>  {item.is_vegetarian===null?(<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={White} />):item.is_vegetarian === 'veg' ?
                                 (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={Veg} />)
                                 : (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={nonVeg} />)}</div>
                             <div style={{ width: "160px"}} >
-                                {/* <div
-
-                                    style={{
-                                        height: '18px',
-                                        // width: `${5.3*(item.type.length) + 25 + 3*(item.type.length)}px`,
-                                        marginLeft: '12px',
-                                        borderRadius: '10px 4px 4px 10px',
-                                        marginBottom: '10px',
-                                        backgroundColor: 'red'
-                                    }}> */}
-                                         {/* here in the width, i calculated an approx width per letter because the tags for the dishes can be anything other than
-                                            must try or recommended and the tag width must adjust according to that so i ended up at an approx relationship */}
-                                    {/* <div >
-
-                                        <div><div style={{ height: '2px' }}>{itemTypeIcons["RECOMMENDED"]}
-                                        </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {item.tags[0]}</span> </div>
-                                    </div>
-
-                                </div> */}
+                                
 
                                 <div style={{ marginLeft: '5px' }} >
                                     <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.name}</div>
@@ -164,8 +147,8 @@ function Displaydish(props) {
                                         )
                                         : (
                                             <div style={{
-                                                backgroundColor: '#ff5656', height: '21px',
-                                                cursor: 'pointer', width: '71px', borderRadius: '5px'
+                                                backgroundColor: '#ff5656', height: '24px',
+                                                cursor: 'pointer', width: '71px', borderRadius: '5px',
                                             }}>
                                                 <div style={{ display: 'flex', color: '#fff' }}>
                                                     <div ><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} onClick={() => handleDecrease(item)} /></div>

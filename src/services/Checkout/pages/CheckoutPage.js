@@ -12,7 +12,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Alert from '@material-ui/lab/Alert';
-import checkin from '../../../assets/authentication/logo.png'
+import checkin from '../../../assets/authentication/logo.png';
+import BackButton from '../../../assets/RoomServices/BackButton.svg';
 
 // Razorpay Load Script function
 function loadScript(src) {
@@ -27,6 +28,34 @@ function loadScript(src) {
 		}
 		document.body.appendChild(script)
 	})
+}
+
+const navBarStyle = {
+  paddingTop: "2.3vh",
+  paddingLeft: "4.78vw",
+  paddingRight: '6.25vw',
+  paddingBottom: '1vh',
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  zIndex: '100',
+  background: 'white',
+  minWidth: '100vw'
+}
+
+const backButtonStyle = {
+  paddingRight : "3.28vw",
+  width: "3.75vw",
+  height: "3.7vh",
+  display : "inline"
+}
+
+const headingStyle = {
+  display: 'inline',
+  fontSize : "3.7vh",
+  verticalAlign : "bottom",
+  color: '#6d6d6d',
+  fontFamily: "JosefinSans-Regular"
 }
 
 const CheckoutPage = (props) => {
@@ -122,17 +151,21 @@ const CheckoutPage = (props) => {
   
   return (
     <div>
-      <div style={{ height: '80px', width: '100%', backgroundColor: '#ececec' }}>
-        <div style={{ display: 'flex' }}>
+      <div>
+        {/* <div style={{ display: 'flex' }}>
           <ArrowBackIosIcon style={{ color: '#6d6d6d', margin: '12px 0px 0px 12px' }}
             onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/viewcart")} />
           <span style={{ color: "#6d6d6d", fontSize: '20px', marginTop: '15px', }}>
             Settle Bill
           </span>
+        </div> */}
+        <div style={navBarStyle}>
+                <img onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/viewcart")} src={BackButton} alt="Back Button" style={backButtonStyle} />
+                <p style={headingStyle}>Check out</p>
         </div>
-        <div style={{ color: "#6d6d6d", fontSize: '15px', margin: '25px 0px 0px 15px' }}>
+        <p style={{ color: "#6d6d6d", fontSize: '15px', marginTop: '9vh', marginLeft: '5vw' }}>
           Bill Details
-        </div>
+        </p>
         {razorpayAlert&&<Alert
           action={
             <IconButton
@@ -204,13 +237,15 @@ const CheckoutPage = (props) => {
         >
           {props.applyPromo.error.title}
         </Alert>}
-
-        <div><SettleBill settleBillDetails={props.getSettleBillDeatils}/></div>
-        <div> <Promos /></div>
-        <div><GrandTotal settleBillDetails={props.getSettleBillDeatils} /></div>
-        <div className="text-center" style={{ bottom: 20, position: 'fixed', width: '100%' }}><Button fullWidth style={{ backgroundColor: '#32c282', marginTop: '30px', color: '#fff', width: '90%' }} onClick={handlePayClick}>PAY</Button></div>
+        
+          <div><SettleBill settleBillDetails={props.getSettleBillDeatils}/></div>
+          <div> <Promos /></div>
+          <div><GrandTotal settleBillDetails={props.getSettleBillDeatils} /></div>
+        
+          
+        
       </div>
-
+      <div className="text-center" style={{ bottom: 20, position: 'fixed', width: '100%', backgroundColor: 'white' }}><Button fullWidth style={{ backgroundColor: '#32c282', marginTop: '30px', color: '#fff', width: '90%' }} onClick={handlePayClick}>PAY</Button></div>
 
     </div>
   )

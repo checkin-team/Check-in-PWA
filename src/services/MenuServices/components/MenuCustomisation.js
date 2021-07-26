@@ -142,7 +142,7 @@ function MenuCusomisation({dish, _add_item, _remove_item,cart }) {
                 style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
                 onClick={() => toggleDrawer()}
             >
-                ADD
+                ADD<br/><p style={{marginLeft: '-5vw',marginTop: '5px'}}>customizable</p>
             </div>
             <Drawer anchor={"bottom"} open={open} onClose={() => toggleDrawer()}>
                 <div

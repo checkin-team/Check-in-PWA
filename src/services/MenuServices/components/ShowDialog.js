@@ -42,7 +42,7 @@ function ShowDialog(props){
         <Dialog open={open} onClose={handleClose} classes={{paper: classes.paper}}  variant="outlined" TransitionComponent={Transition} transitionDuration={335} >
             
             <div style={{margin: "14px 15px 5px 15px"}}>
-                <img src={image} width="100%" height="30% !important" style={{borderRadius: "20px", boxShadow: "0px 0px 5px 5px #ced4da"}} />
+                <img src={image} width="100%" height="200vh !important" style={{borderRadius: "5px"}} />
             </div>
             <div style={{ height: '100px', width: "100%", marginLeft: "10px", marginTop: "10px", marginBottom: "10px"}}>
                     <div style={{ display: 'flex', justifyContent: "space-between" }}>

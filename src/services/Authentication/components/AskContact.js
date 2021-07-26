@@ -74,7 +74,7 @@ function AskContact(props) {
           <TextInput
             fullWidth
             label={"Contact No"}
-            placeholder={"Enter your Contact Number"}
+            placeholder={"Enter your Contact Number (10 digits)"}
             InputLabelProps={{
               shrink: true,
               style: { color: '#fff' },

@@ -4,6 +4,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useHistory } from 'react-router-dom';
 import SettleBill from '../components/SettleBill'
 import Promos from '../components/Promos'
+import BackButton from '../../../assets/RoomServices/BackButton.svg';
 import GrandTotal from '../components/GrandTotal';
 import Button from '../.././../shared/components/Button/Basic'
 import Paper from '@material-ui/core/Paper';
@@ -122,16 +123,48 @@ const ApplyPrommos = (props) => {
         history.push('/settlebill')
     }
 
+    const navBarStyle = {
+        paddingTop: "2.3vh",
+        paddingLeft: "4.78vw",
+        paddingRight: '6.25vw',
+        paddingBottom: '1vh',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        zIndex: '100',
+        background: 'white',
+        minWidth: '100vw'
+    }
+
+    const backButtonStyle = {
+        paddingRight : "3.28vw",
+        width: "3.75vw",
+        height: "3.7vh",
+        display : "inline"
+    }
+
+    const headingStyle = {
+        display: 'inline',
+        fontSize : "3.7vh",
+        verticalAlign : "bottom",
+        color: '#6d6d6d',
+        fontFamily: "JosefinSans-Regular"
+    }
+
     return (
         <div>
             <div style={{ height: '130px', width: '100%', backgroundColor: '#ececec' }}>
                 <div >
-                    <div style={{position: 'fixed',height: '4vh',paddingTop: '0.65vh' ,top: '0', left : '0', width: '100vw', zIndex: '100', background: '#ececec', paddingBottom: '2vh'}}>
+                    {/* <div style={{position: 'fixed',height: '4vh',paddingTop: '0.65vh' ,top: '0', left : '0', width: '100vw', zIndex: '100', background: '#ececec', paddingBottom: '2vh'}}>
                     <ArrowBackIosIcon style={{ color: '#6d6d6d', margin: '12px 0px -5px 3vw' }}
                         onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/settlebill")} />
                     <span style={{ color: "#6d6d6d", fontSize: '20px', marginTop: '15px', }}>
                         Apply Coupons
-                    </span></div>
+                    </span></div> */}
+                    <div style={navBarStyle}>
+                        <img onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/settlebill")}  src={BackButton} alt="Back Button" style={backButtonStyle} />
+                        <p style={headingStyle}>Apply Coupons</p>
+                    </div>
     {/* Input for searching promo codes
                     <Paper
                         elevation={0}
@@ -163,21 +196,21 @@ const ApplyPrommos = (props) => {
 
                         </div>
                     </Paper> */}
-                <div style={{width: '100vw',display:"flex",alignItems:"center",marginTop: '5.5vh', background : 'rgb(236, 236, 236)',paddingTop: '4vh'}}>
+                <div style={{marginLeft: '2vw',width: '96vw',display:"flex",alignItems:"center",marginTop: '5.5vh', background : 'rgb(236, 236, 236)',paddingTop: '4vh'}}>
                     <input type="text" style={promoSearchStyle} placeholder="Search for Promo code" />
-                   <Typography variant="span" style={{position:"absolute",right:"5vw",color:"#ff5656"}}>Apply</Typography>
+                   <Typography variant="span" style={{position:"absolute",right:"7vw",color:"#ff5656"}}>Apply</Typography>
                 </div>
 
 
                 </div>
-                <div style={{ color: "#6d6d6d", fontSize: '15px', margin: '15px 0px 6vh 3vw'}}>
+                <div style={{ color: "#6d6d6d", fontSize: '15px', margin: '15px 0px 6vh 5vw'}}>
                     Available Promo
                 </div>
 
                 <div>
                     <br></br>
                     {promos.map((offer,index) => (
-                        <div style={{marginTop: '2vh',marginLeft:"3vw"}}>
+                        <div style={{marginTop: '2vh',marginLeft:"5vw",marginRight: '2vw'}}>
                             <div style={{display: 'flex', justifyContent: 'space-between',alignItems:"center"}}>
                                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",border:"1px solid #bebebe",width:"35vw",height:"8vw",borderRadius:"2vw",padding:"0"}}>
                                     <img src={promo5} style={offerLogo}/>

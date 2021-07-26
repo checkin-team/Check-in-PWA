@@ -3,6 +3,7 @@ import VegIcon from '../../../assets/home/vegicon.png'
 import NonVegIcon from '../../../assets/home/nonvegicon.jpg'
 import { connect } from 'react-redux';
 import {getSettleBill} from '../middleware/index';
+import White from '../../../assets/home/White.jpg'
 
 function SettleBill(props) {
 
@@ -53,12 +54,12 @@ function SettleBill(props) {
 
 
     return (
-        <div style={{ marginTop: '20px', marginRight: '10px' }}>
+        <div style={{ marginTop: '10px', marginRight: '5vw' }}>
             {billdetails?.map(billitem =>
                 <div style={{ display: 'flex', justifyContent: 'space-between', }}>
                     <div style={{ margin: '20px 0px 0px 20px', display: 'flex' }}>
-                        {billitem.item.is_vegetarian===null?null:
-                        billitem.item.is_vegetarian === "veg" ?
+                        {billitem.item.is_vegetarian===null?(<img src={White} style={{ height: '10px', width: '10px' }} />):
+                        billitem.item.is_vegetarian === 'veg' ?
                             (<img src={VegIcon} style={{ height: '10px', width: '10px' }} />)
                             :
                             (<img src={NonVegIcon} style={{ height: '10px', width: '10px' }} />)}

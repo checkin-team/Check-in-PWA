@@ -12,9 +12,9 @@ function Promos(props) {
     return (
 
         <>
-            <Divider style={{ height: '5px', width: '100%', marginTop: '30px' }} />
+            <Divider style={{marginTop: '20px', height: '5px', width: '100%',  }} />
             {props.applyPromo?.data.code?
-                <div style={{ marginTop: '20px', display: 'flex', marginLeft: '10px', justifyContent: 'space-between',alignContent:"center", marginRight: '10px' }}>
+                <div style={{ marginTop: '20px', display: 'flex', marginLeft: '5vw', justifyContent: 'space-between',alignContent:"center", marginRight: '10px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <img src={PercentageIcon} style={{ height: '25px' }} />
 
@@ -28,13 +28,13 @@ function Promos(props) {
 
             </div>
             :
-            <div style={{ marginTop: '20px', display: 'flex', marginLeft: '10px', justifyContent: 'space-between', marginRight: '10px' }}>
+            <div style={{ marginTop: '20px', display: 'flex', marginLeft: '5vw', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <img src={PercentageIcon} style={{ height: '25px' }} />
 
                     {<div style={{ marginTop: '6px', color: '#6d6d6d', marginLeft: '10px', fontSize: '15px',cursor:"pointer" }} onClick={() => history.push("/Apply")}>Apply Promo Code</div>}
                 </div>
-                <div style={{ marginTop: '6px', color: '#ff5656', fontWeight: 600, fontSize: '12px',cursor:"pointer" }} onClick={() => history.push("/Apply")}>
+                <div style={{marginRight: '5vw', marginTop: '6px', color: '#ff5656', fontWeight: 600, fontSize: '12px',cursor:"pointer" }} onClick={() => history.push("/Apply")}>
                     View Offers
             </div>
 

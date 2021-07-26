@@ -11,11 +11,12 @@ const useStyles=makeStyles(theme=>({
         [theme.breakpoints.down('sm')]:{
             padding: "1rem",
         },
-        margin: "2rem 0"
+        margin: "2rem 5vw",
+        
     },
     name:{
         color: "#6d6d6d",
-        fontWeight: "600!important",
+        fontWeight: "500!important",
     },
     chip:{
         fontFamily: "Arial",
@@ -29,7 +30,9 @@ const useStyles=makeStyles(theme=>({
         textTransform: "uppercase",
         color: "#fff",
         backgroundColor: "#e88e45",
-        fontSize: '0.7rem'
+        fontSize: '0.7rem',
+        height: '6vw',
+        marginTop: '1.1vw',
     },
     progress:{
         fontWeight:"600 !important",

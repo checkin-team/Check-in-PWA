@@ -136,7 +136,7 @@ function Displaydish(props) {
                                                 <MenuCustomisation dish={item}/>
                                                 :
                                                 (<div><div
-                                                    style={{ paddingTop: '5px', paddingLeft: '20px', paddingRight: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
+                                                    style={{paddingTop: '5px', paddingLeft: '20px', paddingRight: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
                                                     onClick={() => handleIncrease(item)} 
                                                 >
                                                     ADD 
@@ -166,7 +166,9 @@ function Displaydish(props) {
                                     <div style={{ paddingTop: "10px"}}><img style={{
                                         
                                         //border: "2px solid black",
-                                        height: '80px',
+                                        
+                                        width: '25vw',
+                                        maxHeight: '18.5vw',
                                         marginTop: '4px',
                                         borderRadius: '5px',
                                         marginLeft: '40px',
@@ -184,6 +186,10 @@ function Displaydish(props) {
                                                 borderRadius: '5px',
                                                 cursor: 'pointer',
                                                 border: ' 1px solid #ff5656',
+                                                // position: 'absolute',
+                                                // bottom: '5',
+                                                // right: '2vw',
+
 
                                                 // marginBottom: '-140px'
                                             }}

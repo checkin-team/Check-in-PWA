@@ -127,17 +127,36 @@ export const authenticate =()=>async (dispatch,getState)=>{
 export const cookieAuthenticate =()=>async (dispatch,getState)=>{
   try{ dispatch(authenticateReq()) 
     const data= cookies.getJSON('user')
-    dispatch(authenticateSuccess(data));
-    dispatch(getSessionDetails())
+    // const resp = await make_API_call('get','')
+    const url = 'https://dev.api.check-in.in/sessions/active/';
+    const resp = await fetch(url,{
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${data.token}`
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+    const respData = await resp.json();
+    
+    if(respData.is_requested_checkout===true||respData.status===404||respData.status===401){
+      cookies.remove('user');
+      document.location.reload();
+    }else{
+
+      dispatch(authenticateSuccess(data));
+      dispatch(getSessionDetails())
       dispatch(_set_state({
         login: {
           isLoggedIn: true
         }
       }))
-     
+      
+    }
     }catch(err){
       dispatch(authenticateFailure(err))
-  
+      cookies.remove('user');
+      // document.location.reload();
     } 
 }
 

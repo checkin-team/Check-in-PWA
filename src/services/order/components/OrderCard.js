@@ -29,7 +29,7 @@ const useStyles=makeStyles(theme=>({
         textTransform: "uppercase",
         color: "#fff",
         backgroundColor: "#e88e45",
-        fontSize: '0.7rem'
+        fontSize: '0.6rem'
     },
     progress:{
         fontWeight:"600 !important",
@@ -131,7 +131,7 @@ const OrderCard = ({data}) => {
                         <Typography className={isActive200?classes.name200:classes.name} variant="h6">{data.item.name} &nbsp; <Chip className={classes.chip} size="small"  label={`QTY: ${data.quantity}`} /></Typography>
                     </Grid>
                     <Grid style={{display:"flex",justifyContent:"flex-end"}} item lg={2} md={2} sm={2} xs={isActive?12:4}>
-                        {data.status===1?<Chip className={classes.pending} label={event[data.status]}></Chip>:null}
+                        {data.status===1?<Chip className={classes.pending} size="small" label={event[data.status]}></Chip>:null}
                         {data.status===5?<Chip className={classes.progress} label={event[data.status]}></Chip>:null}
                         {data.status===10?<Chip className={classes.delivered} label={event[data.status]}></Chip>:null}
                         {data.status===9?<Chip className={classes.cancelled} label={event[data.status]}></Chip>:null}

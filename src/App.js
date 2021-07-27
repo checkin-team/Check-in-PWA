@@ -15,6 +15,7 @@ import ViewOrders from "./services/order/pages/ViewOrders";
 import PaymentSuccessful from "./services/order/pages/PaymentSuccessful";
 import ScrollToTop from 'react-router-scroll-top';
 import OrderSuccessful from "./services/order/pages/OrderSuccessful"
+import PrivateRoute from "./PrivateRoute"
 // import { useSelector } from "react-redux"
 // import axios from "axios";
 function App(props) {
@@ -31,7 +32,7 @@ function App(props) {
             {
               state.signup.login.isLoggedIn ?
                 <>
-                  <Route path="/settlebill" component={CheckoutPage} />
+                  {/* <Route path="/settlebill" component={CheckoutPage} />
                   <Route path="/viewcart" component={ViewCartPage} />
                   <Route path="/home" component={HomePage} />
                   <Route path="/menu" component={MenuPage} />
@@ -42,12 +43,28 @@ function App(props) {
                   <Route path="/order" component={ViewOrders} />
                   <Route path="/payment" component={PaymentSuccessful} />
                   <Route path="/order-successful" component={OrderSuccessful} />
-                  
+                   */}
+                  <PrivateRoute path="/settlebill" component={CheckoutPage} />
+                  <PrivateRoute path="/viewcart" component={ViewCartPage} />
+                  <PrivateRoute path="/home" component={HomePage} />
+                  <PrivateRoute path="/sides" component={MenuCustomisation} />
+                  <PrivateRoute path="/Apply" component={ApplyPrommos} />
+                  <PrivateRoute exact path="/" component={HomePage} />
+                  <PrivateRoute path="/requests" component={MyRequestPage} />
+                  <PrivateRoute path="/order" component={ViewOrders} />
+                  <PrivateRoute path="/payment" component={PaymentSuccessful} />
+                  <PrivateRoute path="/order-successful" component={OrderSuccessful} />
+                  <PrivateRoute path="/menu" component={MenuPage} />
+                     
                 </>
                 :
                 <>
-                  <Route exact path="/" component={SignupPage} />
-                  <Route path="/signup" component={SignupPage} />
+                <PrivateRoute path="/order" component={ViewOrders} />
+                <PrivateRoute path="/requests" component={MyRequestPage} />
+                <PrivateRoute path="/settlebill" component={CheckoutPage} />
+                <PrivateRoute path="/menu" component={MenuPage} />
+                <Route exact path="/" component={SignupPage} />
+                <Route path="/signup" component={SignupPage} />
                 </>
             }
             <div style={{ background: "yellow", width: "100%", padding: "100px" }} >

@@ -100,7 +100,7 @@ export const authenticate =()=>async (dispatch,getState)=>{
       body: JSON.stringify({id_token}) // body data type must match "Content-Type" header
     })
     const data = await resp.json();
-    cookies.set('user',data);
+    cookies.set('user',data,{expires:30});
     dispatch(authenticateSuccess(data));
     if(data.is_profile_ready===false){
       dispatch(_set_state({

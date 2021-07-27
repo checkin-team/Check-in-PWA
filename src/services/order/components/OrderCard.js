@@ -83,7 +83,7 @@ const useStyles=makeStyles(theme=>({
     name200:{
         color: "#6d6d6d",
         fontWeight: "600!important",
-        fontSize: "0.8rem",
+        fontSize: "20px",
     },
     oddAddOnContainer:{
         margin: "1rem 0",
@@ -111,6 +111,20 @@ const OrderCard = ({data}) => {
        10: "Delivered",
        9: "Cancelled",
     }
+
+    const statusButtonStyle = {
+        background: "#e88e45",
+        color: "white",
+        fontFamily: "josefin_sans_semibold",
+        letterSpacing: "-0.03",
+        fontSize: '2.5vw',
+        borderRadius: "2.09vw",
+        textAlign: 'center',
+        maxHeight: '2.5vw',
+        minWidth: '12vw',
+        padding: '0.7vh 3.5vw'
+    }
+
     const [orderTime,setOrderTime]= useState();
 
     const calcTime=()=>{
@@ -133,13 +147,13 @@ const OrderCard = ({data}) => {
             <Card variant="outlined" className={classes.card}>
                 <Grid container>
                     <Grid item lg={10} md={10} sm={10} xs={8}>
-                        <Typography className={isActive200?classes.name200:classes.name} variant="h6">{data.item.name} &nbsp; <Chip className={classes.chip} size="small"  label={`QTY: ${data.quantity}`} /></Typography>
+                        <Typography className={isActive200?classes.name200:classes.name} variant="h6">{data.item.name} &nbsp; <span style={{...statusButtonStyle,fontFamily: "Arial",fontSize: "0.6rem",color: "#fff",padding: '0.7vh 1.5vw',backgroundColor: "#6d6d6d"}}>{`QTY: ${data.quantity}`} </span>{/*<Chip className={classes.chip} size="small"  label={`QTY: ${data.quantity}`} />*/}</Typography>
                     </Grid>
-                    <Grid style={{display:"flex",justifyContent:"flex-end"}} item lg={2} md={2} sm={2} xs={isActive?12:4}>
-                        {data.status===1?<Chip className={classes.pending} size="small" label={event[data.status]}></Chip>:null}
-                        {data.status===5?<Chip className={classes.progress} label={event[data.status]}></Chip>:null}
-                        {data.status===10?<Chip className={classes.delivered} label={event[data.status]}></Chip>:null}
-                        {data.status===9?<Chip className={classes.cancelled} label={event[data.status]}></Chip>:null}
+                    <Grid style={{display:"flex",justifyContent:"flex-end",marginTop: '1.75vw'}} item lg={2} md={2} sm={2} xs={isActive?12:4}>
+                        {data.status===1?<span style={{...statusButtonStyle,background: "#e88e45"}}>{event[data.status]}</span>:null}
+                        {data.status===5?<span style={{...statusButtonStyle,background: "#0295AA"}}>{event[data.status]}</span>:null}
+                        {data.status===10?<span style={{...statusButtonStyle,background: "#32c282"}}>{event[data.status]}</span>:null}
+                        {data.status===9?<span style={{...statusButtonStyle,background: "#FF5656"}}>{event[data.status]}</span>:null}
                     </Grid>
                 </Grid>
                     {data.customizations.length>=1?<Grid Container>

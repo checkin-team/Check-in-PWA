@@ -138,11 +138,14 @@ function MenuCusomisation({dish, _add_item, _remove_item,cart }) {
         },[selectedCustomization,selectedType])
     return (
         <div>
-            <div
-                style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
-                onClick={() => toggleDrawer()}
-            >
-                ADD<br/><p style={{marginLeft: '-5vw',marginTop: '5px'}}>customizable</p>
+            <div>
+                <div
+                    style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
+                    onClick={() => toggleDrawer()}
+                >
+                    ADD
+                </div>
+                {/* <p style={{textAlign: 'center',marginTop: '5px', color: '#6d6d6d', fontWeight: '500'}}>Customizable</p> */}
             </div>
             <Drawer anchor={"bottom"} open={open} onClose={() => toggleDrawer()}>
                 <div

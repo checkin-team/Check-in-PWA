@@ -104,7 +104,7 @@ function MenuPage(props) {
                 return( 
                     <div>                                                       
                         <Displaydish key={item.name} obj = {JSON.parse(JSON.stringify(item))} searchTerm={searchTerm} index = {index}/>
-                        <Divider style={{ height: '5px', width: "100%" }} />             
+                        <Divider style={{ height: '5px', width: "100%",marginTop: '9vh',marginBottom: '4vh'}} />             
                     </div>
                 )
             })
@@ -113,7 +113,7 @@ function MenuPage(props) {
                 return( 
                     <div>                                                       
                         <Displaydish key={item.name} obj = {JSON.parse(JSON.stringify(item))} searchTerm={searchTerm} index = {index}/>
-                        <Divider style={{ height: '5px', width: "100%" }} />             
+                        <Divider style={{ height: '5px', width: "100%",marginTop: '7vh',marginBottom: '4vh'}} />             
                     </div>
                 )
             })}

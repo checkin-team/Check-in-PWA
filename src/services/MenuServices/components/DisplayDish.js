@@ -92,27 +92,27 @@ function Displaydish(props) {
                 if(searchTerm=='') return elem
                 else if(elem.name.toLowerCase().includes(searchTerm.toLowerCase()))return elem
             }).map((item, index) =>
-                <div style={{height: '150px',width: "100%", marginLeft: "8px"}}>
+                <div style={item.description.length >= 1? {height: 'auto',width: "100%", marginLeft: "8px",marginBottom: '2vh'}:{height: '11vh',width: "100%", marginLeft: "8px",marginBottom: '2vh'}}>
                     <div style={{ display: 'flex', justifyContent: "space-between" }}>
                         <div style={{ display: 'flex', marginLeft: "5px" }} >
-                            <div>  {item.is_vegetarian===null?(<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={White} />):item.is_vegetarian === 'veg' ?
+                            <div>  {item.is_vegetarian===null?null:item.is_vegetarian === 'veg' ?
                                 (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={Veg} />)
                                 : (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={nonVeg} />)}</div>
-                            <div style={{ width: "160px"}} >
+                            <div style={{ width: "auto"}} >
                                 
 
-                                <div style={{ marginLeft: '5px' }} >
+                                <div style={{ marginLeft: '10px' }} >
                                     <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.name}</div>
                                     {item.costs.length>1? null:
                                     <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{item.costs[0]}</div>
                                     }
-                                    <div style={{color: "grey", opacity: "0.8", fontSize: "0.8em", marginTop: "5px"}} id={`${props.obj.name} ${index} desc`} className="description">
+                                    {item.description !== ""?(<div style={{color: "grey", opacity: "0.8", fontSize: "0.8em", marginTop: "5px"}} id={`${props.obj.name} ${index} desc`} className="description">
 
                                     {/* Here the id of description div consist of the category name plus the index of the dish inside that collection of dishes
                                         so that we easily get the correct div for expanding it on the click on more button for displaying whole description*/ }
 
                                         {item.description} 
-                                    </div> {item.description.length > 60? 
+                                    </div>):null }{item.description.length > 60? 
                                     (<span style={{color: "#ff5656"}} id="more" onClick={(event) => showFullDescription(event, props.obj.name,index)} >...more</span>) : (<> </>)}
                                 </div>
                             </div>
@@ -133,13 +133,14 @@ function Displaydish(props) {
                                     {cart.items.data?.find(i=>i.pk==item.pk)?.quantity  == undefined?
                                         (
                                             item.types.length>1||item.customizations.length>=1?
-                                                <MenuCustomisation dish={item}/>
+                                                (<div><MenuCustomisation dish={item}/>
+                                                <p style={{marginLeft: '0vw',marginTop: '5px', color: '#6d6d6d', fontWeight: '500',fontSize: '11px',textAlign: 'center'}}>Customizable</p></div>)
                                                 :
                                                 (<div><div
                                                     style={{paddingTop: '5px', paddingLeft: '20px', paddingRight: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
                                                     onClick={() => handleIncrease(item)} 
                                                 >
-                                                    ADD 
+                                                    ADD
                                                     
                                                 </div>
                                                 </div>

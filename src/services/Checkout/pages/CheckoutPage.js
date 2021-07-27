@@ -161,7 +161,7 @@ const CheckoutPage = (props) => {
         </div> */}
         <div style={navBarStyle}>
                 <img onClick={() => history.hasOwnProperty("goBack") ? history.goBack() : history.push("/viewcart")} src={BackButton} alt="Back Button" style={backButtonStyle} />
-                <p style={headingStyle}>Check out</p>
+                <p style={headingStyle}>Checkout</p>
         </div>
         <p style={{ color: "#6d6d6d", fontSize: '15px', marginTop: '9vh', marginLeft: '5vw' }}>
           Bill Details

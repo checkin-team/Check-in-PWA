@@ -62,6 +62,10 @@ function Displaydish(props) {
         "BEST SELLER": "#c4f5fc"
     }
 
+    // const ronit = {
+    //     marginLeft: "100px",
+    //     marginTop: "7vh"
+    // }
     {/* Since the tags wont be only of 2 types like recommended and must try. There will be many
          so for that i made an object with property named as tag and its corresponding icon html element */}
     const itemTypeIcons = {
@@ -103,7 +107,7 @@ function Displaydish(props) {
 
                                 <div style={{ marginLeft: '10px' }} >
                                     <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.name}</div>
-                                    {item.costs.length>1? null:
+                                    {item.costs.length>1? <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377; {item.costs[0]}</div>:
                                     <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{item.costs[0]}</div>
                                     }
                                     {item.description !== ""?(<div style={{color: "grey", opacity: "0.8", fontSize: "0.8em", marginTop: "5px"}} id={`${props.obj.name} ${index} desc`} className="description">

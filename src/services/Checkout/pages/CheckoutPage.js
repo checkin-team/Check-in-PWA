@@ -95,7 +95,7 @@ const CheckoutPage = (props) => {
    const email= props.userDetails.data.email;
    const phone_number= props.userDetails.data.phone_no.substr(1);
   const options = {
-			key: 'rzp_test_edAXAbPED9Pl1G',
+			key: 'rzp_live_kcpBx778ilK1e3',
 			currency: props.razorpay.data.currency,
 			amount: (props.getSettleBillDeatils.data.bill?.total*100).toString(),
 			order_id: props.razorpay.data.order_id,

@@ -90,7 +90,7 @@ export const resendOtp =()=>async (dispatch,getState)=>{
 export const authenticate =()=>async (dispatch,getState)=>{
   try{ dispatch(authenticateReq()) 
     const id_token= getState().authentication.login.otp.payload.ya; 
-    const url = 'https://dev.api.check-in.in/auth/authenticate/';
+    const url = 'https://api.check-in.in/auth/authenticate/';
     const resp = await fetch(url,{
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
@@ -128,7 +128,7 @@ export const cookieAuthenticate =()=>async (dispatch,getState)=>{
   try{ dispatch(authenticateReq()) 
     const data= cookies.getJSON('user')
     // const resp = await make_API_call('get','')
-    const url = 'https://dev.api.check-in.in/sessions/active/';
+    const url = 'https://api.check-in.in/sessions/active/';
     const resp = await fetch(url,{
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       headers: {

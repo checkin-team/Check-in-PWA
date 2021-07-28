@@ -26,8 +26,9 @@ export const _addItem = (payload,cart) =>(dispatch,getState)=>{
   const item = cart;
   item.items.data[index].quantity= item.items.data[index].quantity+1;
   // console.log(item);
-  return dispatch(increaseItem(item))
-}
+   dispatch(increaseItem(item))
+    dispatch(_calculateAmount())
+  }
 else{
   const item= payload;
   if(item.quantity==undefined)item.quantity=0
@@ -35,7 +36,9 @@ else{
   if(item.type_index==undefined){
     item.type_index=0;
   }
-  return dispatch(addItem(item))
+  dispatch(addItem(item))
+  dispatch(_calculateAmount())
+
 }
 }
 
@@ -49,15 +52,18 @@ export const _removeItem = (payload,cart) =>(dispatch,getState)=>{
     
     item.items.data[index].quantity= item.items.data[index].quantity-1;
     console.log(item);
-    return dispatch( decreaseItem(item))
+     dispatch( decreaseItem(item))
+     dispatch(_calculateAmount())
   }
   else{
-    return dispatch(removeItem(payload))
+     dispatch(removeItem(payload))
+     dispatch(_calculateAmount())
   }
 }
 
-export const _calculateAmount = (cart)=>(dispatch,getState)=>{
+export const _calculateAmount = ()=>(dispatch,getState)=>{
   var total=0;
+  const cart = getState().cart;
   if(cart.items.data.length>=1){
     
     cart.items.data.forEach(item=>{

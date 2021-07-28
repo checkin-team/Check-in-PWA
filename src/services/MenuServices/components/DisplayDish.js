@@ -76,13 +76,13 @@ function Displaydish(props) {
     }
 
     // Making a useeffect to calculate amount 
-    useEffect(
-        () => {
-        console.log("item added")
-          Amount(cart)
-        },
-        [handleIncrease,handleDecrease]
-      )
+    // useEffect(
+    //     () => {
+    //     console.log("item added")
+    //       Amount(cart)
+    //     },
+    //     [handleIncrease,handleDecrease]
+    //   )
 
     return (
         
